@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moskow Sales Center | News</title>
+
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="../index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header
+      class="flex items-center max-w-[1294px] mx-auto px-4 pt-2 animate-fadeIn max-md:flex-col max-md:border-b max-md:border-[#C1C1C1] max-md:pb-7 max-md:rounded-b-lg"
+    >
+      <a href="../index.html" class="md:pr-14 logo">
+        <img class="h-auto w-auto" src="../img/icons/logo.svg" alt="Logo" />
+      </a>
+      <nav
+        class="flex gap-[22px] pr-[115px] max-md:flex-col max-md:top-[-400px] max-md:transition-all max-md:fixed left-1/2 top-1/2 max-md:transform max-md:-translate-x-1/2 max-md:-translate-y-1/2 max-md:w-[80%] max-md:bg-white flex max-md:justify-center max-md:items-center text-black max-md:p-10 max-md:gap-5 max-md:shadow-lg max-md:rounded-lg z-[999]"
+      >
+        <button
+          class="absolute top-2 right-4 text-2xl cursor-pointer md:hidden closeMenu"
+        >
+          &times;
+        </button>
+        <a class="text-sm text-sm md:pr-5" href="../index.html">ГЛАВНАЯ</a>
+        <div class="relative max-md:hidden">
+          <div
+            class="flex items-center pt-[0.3px] cursor-pointer"
+            id="catalogButton"
+          >
+            <a class="text-sm" href="#">КАТАЛОГ</a>
+            <img
+              class="w-auto h-auto pl-[6px] pt-[4px] transition-transform duration-300"
+              id="arrowIcon"
+              src="../img/icons/arrowbottom.svg"
+              alt="Каталог"
+            />
+          </div>
+
+          <div
+            id="catalogModal"
+            class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg overflow-hidden opacity-0 scale-95 transition-all duration-300 z-10"
+          >
+            <ul class="py-2">
+              <li class="px-4 py-2 hover:bg-gray-100 font-semibold text-xl">
+                Brand
+              </li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                <a href="../pages/catalog.html"> Samsung </a>
+              </li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                <a href="../pages/catalog.html"> iPhone </a>
+              </li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                <a href="../pages/catalog.html"> Remdi </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <a class="text-sm text-sm" href="../pages/news.html">НОВОСТИ</a>
+        <a class="text-sm text-sm" href="../pages/manufacturers.html"
+          >ПРОИЗВОДИТЕЛИ</a
+        >
+        <a class="text-sm text-sm" href="../pages/contact.html">КОНТАКТЫ</a>
+      </nav>
+
+      <div class="flex justify-between w-full mt-5 md:hidden">
+        <div class="flex gap-3 justify-start items-center">
+          <img src="../img/icons/menu.svg" class="menuOpen cursor-pointer" />
+          <a href="tel:+84951504072">
+            <img src="../img/icons/phone.svg" alt="" />
+          </a>
+        </div>
+        <div class="flex items-center relative px-4 w-[244px] input_linear">
+          <img src="../img/icons/search.svg" alt="" class="w-4 h-4" />
+          <input
+            type="text"
+            class="max-md:w-full pl-2 h-12 rounded-full text-[#454545]"
+            placeholder="Поиск"
+          />
+        </div>
+      </div>
+
+      <div class="flex items-center max-md:hidden">
+        <button
+          id="animatedButton"
+          class="w-[154px] h-[48px] pb-[2px] bg-gradient-to-r to-blue-500 from-purple-500 text-white rounded-full cursor-pointer"
+        >
+          <a href="tel:+84951504072"> Заказать звонок </a>
+        </button>
+        <div class="flex gap-5 ml-10">
+          <a href="#">
+            <img src="../img/icons/search.svg" alt="Search" class="pl-2" />
+            <p class="text-[13px] leading-none pt-[9px]">Поиск</p>
+          </a>
+          <a href="../pages/compare.html">
+            <img
+              src="../img/icons/compaireng.svg"
+              alt="Compare"
+              class="pl-[18px]"
+            />
+            <p class="text-[13px] leading-none pt-[10px]">Сравнить</p>
+          </a>
+          <a href="../pages/saved.html">
+            <img
+              src="../img/icons/menulike.svg"
+              alt="Favorite"
+              class="pl-6 relative"
+            />
+            <p class="text-[13px] leading-none pt-[7px] absolute">Избранное</p>
+          </a>
+        </div>
+      </div>
+      <div
+        class="flex items-center max-md:fixed max-md:bottom-0 max-md:left-0 md:hidden w-full bg-[#f6f6f6] border border-t-[#C1C1C1] px-5 py-4 z-[100] justify-between"
+      >
+        <a
+          href="../index.html"
+          class="flex flex-col items-center justify-center"
+        >
+          <img
+            src="../img/icons/mobilemenuicons/home.svg"
+            alt="Compare"
+            class="pl-[0px]"
+          />
+          <p class="text-[13px] leading-none pt-[10px]">Главная</p>
+        </a>
+        <a
+          href="./catalogMobile.html"
+          class="flex flex-col items-center justify-center"
+        >
+          <img
+            src="../img/icons/mobilemenuicons/catalog.svg"
+            alt="Compare"
+            class="pl-[0px]"
+          />
+          <p class="text-[13px] leading-none pt-[10px]">Каталог</p>
+        </a>
+        <a
+          href="../pages/saved.html"
+          class="flex flex-col items-center justify-center"
+        >
+          <img
+            src="../img/icons/mobilemenuicons/mobilelike.svg"
+            alt="Compare"
+            class="pl-[0px]"
+          />
+          <p class="text-[13px] leading-none pt-[10px]">Избранное</p>
+        </a>
+        <a
+          href="tel:+84951504072"
+          class="flex flex-col items-center justify-center"
+        >
+          <img
+            src="../img/icons/mobilemenuicons/mobilephone.svg"
+            alt="Compare"
+            class="pl-[0px]"
+          />
+          <p class="text-[13px] leading-none pt-[10px]">Позвонить</p>
+        </a>
+      </div>
+    </header>
+
+    <main
+      id="#main"
+      class="max-w-[1294px] mx-auto px-4 pt-2 animate-fadeIn max-md:w-full"
+    >
+      <section class="w-full text-[#454545] mt-8 max-md:mt-1">
+        <a class="text-[#ababab]" href="../index.html">Главная</a>
+        <a class="text-[#ababab]" href="./catalog.html">/ Смартфоны</a> /
+        Карточка товара
+      </section>
+      <section
+        id="contacts"
+        class="pb-16 pt-16 max-md:pt-6 max-md:pb-[20px] gap-10"
+      >
+        <div class="flex gap-4">
+          <aside class="w-1/4 bg-white p-4 rounded max-md:w-full max-md:hidden">
+            <div class="flex justify-between mb-4 items-center">
+              <h2 class="text-sm font-bold mb-2">В реестре Минпромторга</h2>
+            </div>
+            <div>
+              <h3
+                class="font-semibold cursor-pointer flex items-center py-3 border-b-[1px] border-[#D2DAD7] mb-3"
+                onclick="toggleAccordion('brandFilter', 'arrowBrand')"
+              >
+                <span
+                  id="arrowBrand"
+                  class="mr-2 transition-transform transform"
+                >
+                  <img src="../img/icons/simplearrowbottom.svg" alt="" />
+                </span>
+                Бренд
+              </h3>
+              <ul id="brandFilter" class="transition-opacity duration-300 pb-8">
+                <li class="mb-2 flex items-center gap-3 cursor-pointer">
+                  <input type="checkbox" name="brand" id="brand1" checked />
+                  <label for="brand1" class="flex items-center gap-1">
+                    <p class="text-sm">Apple</p>
+                    <span class="text-[#929292] text-xs">110</span>
+                  </label>
+                </li>
+                <li class="mb-2 flex items-center gap-3 cursor-pointer">
+                  <input type="checkbox" name="brand" id="brand2" />
+                  <label for="brand2" class="flex items-center gap-1">
+                    <p class="text-sm">Samsung</p>
+                    <span class="text-[#929292] text-xs">125</span>
+                  </label>
+                </li>
+                <li class="mb-2 flex items-center gap-3 cursor-pointer">
+                  <input type="checkbox" name="brand" id="brand3" />
+                  <label for="brand3" class="flex items-center gap-1">
+                    <p class="text-sm">Xiaomi</p>
+                    <span class="text-[#929292] text-xs">68</span>
+                  </label>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3
+                class="font-semibold cursor-pointer flex items-center py-3 border-b-[1px] border-[#D2DAD7] mb-3"
+                onclick="toggleAccordion('batteryFilter', 'arrowBattery')"
+              >
+                <span
+                  id="arrowBattery"
+                  class="mr-2 transition-transform transform"
+                >
+                  <img src="../img/icons/simplearrowbottom.svg" alt="" />
+                </span>
+                Емкость аккумулятора
+              </h3>
+              <ul
+                id="batteryFilter"
+                class="hidden opacity-0 transition-opacity duration-300 pb-8"
+              >
+                <li class="mb-2 flex items-center gap-3 cursor-pointer">
+                  <input type="checkbox" name="brand" id="brand4" />
+                  <label for="brand4" class="flex items-center gap-1">
+                    <p class="text-sm">4000</p>
+                    <span class="text-[#929292] text-xs">110</span>
+                  </label>
+                </li>
+                <li class="mb-2 flex items-center gap-3 cursor-pointer">
+                  <input type="checkbox" name="brand" id="brand5" />
+                  <label for="brand5" class="flex items-center gap-1">
+                    <p class="text-sm">5000</p>
+                    <span class="text-[#929292] text-xs">125</span>
+                  </label>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3
+                class="font-semibold cursor-pointer flex items-center py-3 border-b-[1px] border-[#D2DAD7] mb-3"
+                onclick="toggleAccordion('screenFilter', 'arrowScreen')"
+              >
+                <span
+                  id="arrowScreen"
+                  class="mr-2 transition-transform transform"
+                >
+                  <img src="../img/icons/simplearrowbottom.svg" alt="" />
+                </span>
+                Тип экрана
+              </h3>
+              <ul
+                id="screenFilter"
+                class="hidden opacity-0 transition-opacity duration-300 pb-8"
+              >
+                <li class="mb-2 flex items-center gap-3 cursor-pointer">
+                  <input type="checkbox" name="brand" id="brand6" />
+                  <label for="brand6" class="flex items-center gap-1">
+                    <p class="text-sm">OLED</p>
+                    <span class="text-[#929292] text-xs">110</span>
+                  </label>
+                </li>
+                <li class="mb-2 flex items-center gap-3 cursor-pointer">
+                  <input type="checkbox" name="brand" id="brand7" />
+                  <label for="brand7" class="flex items-center gap-1">
+                    <p class="text-sm">AMOLED</p>
+                    <span class="text-[#929292] text-xs">125</span>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </aside>
+          <div
+            class="w-3/4 max-md:w-full grid grid-cols-2 max-md:grid-cols-1"
+            id="productList"
+          >
+            <div class="p-4">
+              <div class="relative h-[590px] flex justify-center max-md:h-max">
+                <img
+                  id="mainImage"
+                  src="https://m.media-amazon.com/images/I/71GLMJ7TQiL._AC_SL1500_.jpg"
+                  class="h-[590px] w-[410px] rounded-lg max-md:w-[267px] max-md:h-max"
+                />
+                <div
+                  class="absolute right-5 top-0 w-[44px] h-[44px] bg-[#F6F6F6] rounded-lg flex items-center justify-center md:hidden"
+                >
+                  <img src="../img/icons/like.svg" alt="" />
+                </div>
+              </div>
+
+              <div
+                class="flex justify-between mt-4 space-x-2 bg-white mt-10 border p-4 border-[#D2DAD7] rounded-[30px] overflow-x-auto max-md:rounded-lg"
+              >
+                <img
+                  src="https://m.media-amazon.com/images/I/71GLMJ7TQiL._AC_SL1500_.jpg"
+                  class="w-[80px] max-md:w-[50px] cursor-pointer"
+                  onclick="changeImage(this)"
+                />
+                <img
+                  src="https://m.media-amazon.com/images/I/61bK6PMOC3L._AC_SL1500_.jpg"
+                  class="w-[80px] max-md:w-[50px] cursor-pointer"
+                  onclick="changeImage(this)"
+                />
+                <img
+                  src="https://m.media-amazon.com/images/I/71MHTD3uL4L._AC_SL1500_.jpg"
+                  class="w-[80px] max-md:w-[50px] cursor-pointer"
+                  onclick="changeImage(this)"
+                />
+                <img
+                  src="https://m.media-amazon.com/images/I/71MHTD3uL4L._AC_SL1500_.jpg"
+                  class="w-[80px] max-md:w-[50px] cursor-pointer"
+                  onclick="changeImage(this)"
+                />
+              </div>
+            </div>
+            <div class="bg-white p-6 max-w-sm">
+              <h2
+                class="text-[32px] font-semibold text-[#0C0C0C] mb-[40px] max-md:text-[20px] max-md:mb-6"
+              >
+                Смартфон Apple iPhone 13 128GB
+              </h2>
+
+              <p class="mb-8 text-[#454545] max-md:mb-4">
+                Цвет: <span id="selectedColor">Черный</span>
+              </p>
+              <div class="flex space-x-5 mt-2">
+                <button
+                  class="color-btn w-[123px] h-[120px] max-md:w-[75px] max-md:h-[84px] max-md:rounded-lg rounded-[30px] flex flex-col items-center justify-center transition border border-[#0000001A] btn_linear"
+                  data-color="Черный"
+                >
+                  <span class="block w-8 h-8 bg-gray-900 rounded-full"></span>
+                  <span class="text mt-4 text-[#393E46] max-md:text-xs"
+                    >Черный</span
+                  >
+                </button>
+                <button
+                  class="color-btn w-[123px] h-[120px] max-md:w-[75px] max-md:h-[84px] max-md:rounded-lg rounded-[30px] flex flex-col items-center justify-center transition border border-[#0000001A]"
+                  data-color="Красный"
+                >
+                  <span class="block w-8 h-8 bg-red-500 rounded-full"></span>
+                  <span class="text mt-4 text-[#393E46] max-md:text-xs"
+                    >Красный</span
+                  >
+                </button>
+                <button
+                  class="color-btn w-[123px] h-[120px] max-md:w-[75px] max-md:h-[84px] max-md:rounded-lg rounded-[30px] flex flex-col items-center justify-center transition border border-[#0000001A]"
+                  data-color="Белый"
+                >
+                  <span class="block w-8 h-8 bg-gray-300 rounded-full"></span>
+                  <span class="text mt-4 text-[#393E46] max-md:text-xs"
+                    >Белый</span
+                  >
+                </button>
+              </div>
+
+              <p class="mt-8 text-[#454545] max-md:mt-4">
+                Память: <span id="selectedMemory">64 GB</span>
+              </p>
+              <div class="flex space-x-4 mt-2">
+                <button
+                  class="memory-btn px-8 py-2 max-md:text-sm rounded-full text-[##393E46] transition border border-[#0000001A] btn_linear"
+                  data-memory="64 GB"
+                >
+                  64 GB
+                </button>
+                <button
+                  class="memory-btn px-8 py-2 max-md:text-sm rounded-full text-[##393E46] transition border border-[#0000001A]"
+                  data-memory="128 GB"
+                >
+                  128 GB
+                </button>
+              </div>
+              <div class="flex gap-4 mb-6 max-md:hidden">
+                <a href="./compare.html">
+                  <button
+                    class="btn_linear py-3 px-5 rounded-full mt-[30px] cursor-pointer flex items-center gap-2"
+                  >
+                    <img src="../img/icons/compareact.svg" alt="" />
+                    <span class="text_linear">Сравнить</span>
+                  </button>
+                </a>
+                <a href="./saved.html">
+                  <button
+                    class="btn_linear py-3 px-5 rounded-full mt-[30px] cursor-pointer flex items-center gap-2"
+                  >
+                    <img src="../img/icons/like.svg" alt="" />
+                    <span class="text_linear"> В избранное</span>
+                  </button>
+                </a>
+              </div>
+              <a href="./forma.html" class="max-md:hidden">
+                <button
+                  class="w-[320px] h-[58px] pb-[2px] cursor-pointer text-lg bg-gradient-to-r to-blue-500 from-purple-500 rounded-full text-white custom-animation max-md:mx-auto flex gap-4 justify-center items-center"
+                >
+                  <img
+                    src="../img/icons/savedinnerbtn.svg"
+                    class="max-md:hidden h-6 w-6"
+                    alt=""
+                  />
+                  Получить оптовый прайс
+                </button>
+              </a>
+              <div class="btn_linear mt-8 p-5 rounded-[20px] max-md:hidden">
+                <div class="flex justify-between">
+                  <p class="text_linear">Есть вопросы?</p>
+                  <p class="text_linear">Мы поможем!</p>
+                </div>
+                <div class="flex mt-5 justify-between">
+                  <button
+                    class="cursor-pointer bg-gradient-to-r to-blue-500 from-purple-500 rounded-full text-[#F6F6F6] custom-animation px-3 py-4"
+                  >
+                    Написать специалисту
+                  </button>
+                  <img
+                    src="../img/User Pic.png"
+                    alt=""
+                    class="h-[56px] w-[56px] rounded"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-6 max-md:p-2 rounded-lg w-full">
+          <div class="flex space-x-6 justify-evenly">
+            <button
+              class="tab-btn py-2 text-gray-500 text-[18px] border-b-2 border-transparent focus:border-black"
+              data-tab="description"
+            >
+              Описание
+            </button>
+            <button
+              class="tab-btn py-2 text-gray-500 text-[18px] border-b-2 border-transparent focus:border-black"
+              data-tab="characteristics"
+            >
+              Характеристики
+            </button>
+            <button
+              class="tab-btn py-2 text-black border-b-2 text-[18px] border-[black]"
+              data-tab="reviews"
+            >
+              Отзывы
+            </button>
+            <button
+              class="tab-btn py-2 text-gray-500 text-[18px] border-b-2 border-transparent focus:border-black"
+              data-tab="warranty"
+            >
+              Гарантия
+            </button>
+          </div>
+
+          <div id="description" class="tab-content hidden mt-4">
+            <div
+              class="flex flex-col mt-[32px] bg-[#FAFAFA] p-6 max-md:p-2 rounded-lg"
+            >
+              <h3
+                class="text-semibold text-[24px] mb-4 text-black max-md:text-[20px] max-md:text-center"
+              >
+                Описание
+              </h3>
+              <p class="text-[#263141] leading-6 max-md:text-sm">
+                Смартфон Apple iPhone 13 выполнен в компактном корпусе с
+                привлекательной розовой расцветкой и защищенной конструкцией по
+                стандарту IP68. Мощный чип A15 Bionic обеспечивает быструю и
+                стабильную работу при запуске приложений, просмотре видео,
+                веб-серфинге и выполнении других задач. На дисплее 6.1 дюйма
+                OLED выводится четкая и красочная картинка.
+              </p>
+            </div>
+          </div>
+
+          <div id="characteristics" class="tab-content hidden mt-4">
+            <div
+              class="flex flex-col mt-[32px] bg-[#FAFAFA] p-6 max-md:p-2 rounded-lg"
+            >
+              <h3
+                class="text-semibold text-[24px] mb-4 text-black max-md:text-[20px] max-md:text-center"
+              >
+                Характеристики
+              </h3>
+              <p class="text-[#263141] leading-6 max-md:text-sm">
+                На тыловой стороне расположена камера с двумя датчиками по 12
+                Мп, которые при поддержке ряда технологий и функций позволяют
+                создавать реалистичные снимки в различных условиях. На передней
+                стороне имеется камера 12 Мп для селфи и общения. В мобильном
+                устройстве предлагается широкий набор беспроводных интерфейсов и
+                разъем Lightning 8-pin. Аккумулятор гарантирует продолжительное
+                время автономности. Из особенностей отмечаются поддержка быстрой
+                зарядки, беспроводной зарядки и устройств MagSafe с магнитным
+                позиционированием.
+              </p>
+            </div>
+          </div>
+
+          <div id="reviews" class="tab-content mt-4">
+            <h2 class="text-xl font-semibold mb-10 max-md:hidden">Отзывы</h2>
+
+            <div class="flex items-center space-x-8 mt-4 max-md:hidden">
+              <div class="bg-[#FAFAFA] p-4 rounded-lg text-center w-[180px]">
+                <p class="text-[56px] font-bold mb-3">4.8</p>
+                <p class="text-[#0000001A] text-sm">202 отзыва</p>
+                <div class="flex justify-center mt-1 text-yellow-400 mb-9">
+                  <img src="../img/icons/starfluid.svg" alt="" />
+                  <img src="../img/icons/starfluid.svg" alt="" />
+                  <img src="../img/icons/starfluid.svg" alt="" />
+                  <img src="../img/icons/starfluid.svg" alt="" />
+                  <img src="../img/icons/Star.svg" alt="" />
+                </div>
+              </div>
+
+              <div class="flex-1 space-y-2">
+                <div class="flex items-center my-3">
+                  <p class="w-24 text-sm text-black w-[150px]">Отлично</p>
+                  <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div
+                      class="bg-gradient-to-r to-blue-500 from-purple-500 h-2 rounded-full"
+                      style="width: 90%"
+                    ></div>
+                  </div>
+                  <p class="ml-2 text-sm">100</p>
+                </div>
+
+                <div class="flex items-center my-3">
+                  <p class="w-24 text-sm text-black w-[150px]">Хорошо</p>
+                  <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div
+                      class="bg-gradient-to-r to-blue-500 from-purple-500 h-2 rounded-full"
+                      style="width: 50%"
+                    ></div>
+                  </div>
+                  <p class="ml-2 text-sm">11</p>
+                </div>
+
+                <div class="flex items-center my-3">
+                  <p class="w-24 text-sm text-black w-[150px]">Нормально</p>
+                  <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div
+                      class="bg-gradient-to-r to-blue-500 from-purple-500 h-2 rounded-full"
+                      style="width: 20%"
+                    ></div>
+                  </div>
+                  <p class="ml-2 text-sm">3</p>
+                </div>
+
+                <div class="flex items-center my-3">
+                  <p class="w-24 text-sm text-black w-[150px]">Плохо</p>
+                  <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div
+                      class="bg-gradient-to-r to-blue-500 from-purple-500 h-2 rounded-full"
+                      style="width: 30%"
+                    ></div>
+                  </div>
+                  <p class="ml-2 text-sm">8</p>
+                </div>
+
+                <div class="flex items-center my-3">
+                  <p class="w-24 text-sm text-black w-[150px]">Очень плохо</p>
+                  <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div
+                      class="bg-gradient-to-r to-blue-500 from-purple-500 h-2 rounded-full"
+                      style="width: 10%"
+                    ></div>
+                  </div>
+                  <p class="ml-2 text-sm">1</p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="flex justify-between items-center mt-12 gap-4 max-md:hidden"
+            >
+              <input
+                type="text"
+                placeholder="Написать отзыв"
+                class="px-4 py-6 bg-white border border-[#D2DAD7] rounded-md w-full"
+              />
+              <button
+                class="border btn_linear px-10 py-5 rounded-md text-lg font-bold cursor-pointer"
+              >
+                <span class="text_linear"> Send </span>
+              </button>
+            </div>
+            <div
+              class="flex mt-[32px] bg-[#FAFAFA] p-6 max-md:p-2 rounded-lg gap-5 max-md:hidden"
+            >
+              <img
+                src="../img/User Pic.png"
+                alt=""
+                height="56"
+                width="56"
+                class="h-[56px] w-[56px]"
+              />
+              <div class="flex flex-col">
+                <div class="flex justify-between w-full items-center">
+                  <h3 class="text-[17px] text-[black] font-semibold">
+                    Довольный покупатель
+                  </h3>
+                  <p class="text-sm text-[#0000001A]">21 Июля,2024</p>
+                </div>
+                <div class="flex mt-2 mb-2">
+                  <img src="../img/icons/starfluid.svg" alt="" />
+                  <img src="../img/icons/starfluid.svg" alt="" />
+                  <img src="../img/icons/starfluid.svg" alt="" />
+                  <img src="../img/icons/starfluid.svg" alt="" />
+                  <img src="../img/icons/Star.svg" alt="" />
+                </div>
+                <p class="text-[15px] leading-6 text-[#7E7E7E]">
+                  Недавно приобрёл этот телефон, и пока что всё нравится. Удобно
+                  лежит в руке, работает быстро, заряда батареи хватает надолго
+                  — это то, что мне было нужно. Камера хорошая, снимки
+                  получаются чёткие даже при слабом освещении. Большой и яркий
+                  экран позволяет с комфортом смотреть видео, читать книги и
+                  новости. Есть много встроенных приложений, которые облегчают
+                  жизнь: например, можно управлять умным домом и отслеживать
+                  тренировки. Дизайн стильный и современный, телефон выглядит
+                  дорого и солидно. В целом, я доволен покупкой. Телефон удобен
+                  в использовании, имеет множество полезных функций. Рекомендую
+                  к покупке!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div id="warranty" class="tab-content hidden mt-4">
+            <div
+              class="flex flex-col mt-[32px] bg-[#FAFAFA] p-6 max-md:p-2 rounded-lg"
+            >
+              <h3
+                class="text-semibold text-[24px] mb-4 text-black max-md:text-[20px] max-md:text-center"
+              >
+                Гарантия
+              </h3>
+              <p class="text-[#263141] leading-6 max-md:text-sm">
+                Смартфон Apple iPhone 13 выполнен в компактном корпусе с
+                привлекательной розовой расцветкой и защищенной конструкцией по
+                стандарту IP68. Мощный чип A15 Bionic обеспечивает быструю и
+                стабильную работу при запуске приложений, просмотре видео,
+                веб-серфинге и выполнении других задач. На дисплее 6.1 дюйма
+                OLED выводится четкая и красочная картинка. На тыловой стороне
+                расположена камера с двумя датчиками по 12 Мп, которые при
+                поддержке ряда технологий и функций позволяют создавать
+                реалистичные снимки в различных условиях. На передней стороне
+                имеется камера 12 Мп для селфи и общения. В мобильном устройстве
+                предлагается широкий набор беспроводных интерфейсов и разъем
+                Lightning 8-pin. Аккумулятор гарантирует продолжительное время
+                автономности. Из особенностей отмечаются поддержка быстрой
+                зарядки, беспроводной зарядки и устройств MagSafe с магнитным
+                позиционированием.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div
+      class="flex justify-center bg-[#F6F6F6] border-t-1 border-[#CFCFCF] py-7 mb-20"
+    >
+      <a href="./forma.html">
+        <button
+          class="cursor-pointer bg-gradient-to-r to-blue-500 from-purple-500 rounded-full text-[#F6F6F6] custom-animation px-3 py-4 md:hidden"
+        >
+          Написать специалисту
+        </button>
+      </a>
+    </div>
+
+    <footer class="pb-8 pt-2 bg-[#F8F9FA] max-md:hidden">
+      <div class="max-w-[1296px] mx-auto border-t-[1px] border-[#D2DAD7] pb-6">
+        <div
+          class="px-4 pt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12"
+        >
+          <div>
+            <a
+              ><img src="../img/icons/logo.svg" alt="Логотип" class="mb-3"
+            /></a>
+            <a href="#" class="text-lg">Сайт</a>
+            <p class="mt-3">8 (495) 150-40-72</p>
+          </div>
+
+          <div>
+            <h3 style="font-family: 'MyFontPro'" class="text-[22px] mb-3">
+              Каталог
+            </h3>
+            <ul>
+              <li class="mb-2 flex items-center gap-3">
+                <a href="#" class="text-lg block pb-[10px]">Ноутбуки</a>
+              </li>
+              <li class="mb-2 flex items-center gap-3">
+                <a href="#" class="text-lg block pb-[10px]">Мониторы</a>
+              </li>
+              <li class="mb-2 flex items-center gap-3">
+                <a href="#" class="text-lg block">Планшеты</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 style="font-family: 'MyFontPro'" class="text-[22px] mb-4">
+              Компания
+            </h3>
+            <ul>
+              <li class="mb-2 flex items-center gap-3">
+                <a href="#" class="text-lg pb-[10px] block">Контакты</a>
+              </li>
+              <li class="mb-2 flex items-center gap-3">
+                <a href="#" class="text-lg block">Производители</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="text-lg block pb-[10px]">info@mossales.ru</p>
+            <p class="text-lg block pb-[10px]">Пн - Пт: 10.00 - 18.00</p>
+            <p class="text-lg block">Остаповский пр., 5, стр. 1,БЦ «Контакт»</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="../app.js"></script>
+  </body>
+</html>

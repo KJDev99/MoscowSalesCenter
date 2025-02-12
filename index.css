@@ -163,3 +163,12 @@ input[type="checkbox"]:checked::before {
   background: linear-gradient(#f8f9fa, #f8f9fa 0) padding-box,
     linear-gradient(to right, #a155d3, #277fe9) border-box;
 }
+
+@media (max-width: 640px) {
+  .tab-btn {
+    display: none;
+  }
+  .tab-content {
+    display: block !important;
+  }
+}

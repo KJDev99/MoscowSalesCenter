@@ -183,3 +183,45 @@ function updateFileName() {
     label.textContent = input.files[0].name;
   }
 }
+
+function changeImage(element) {
+  document.getElementById("mainImage").src = element.src;
+}
+
+document.querySelectorAll(".color-btn").forEach((button) => {
+  button.addEventListener("click", () => {
+    document
+      .querySelectorAll(".color-btn")
+      .forEach((btn) => btn.classList.remove("btn_linear"));
+    button.classList.add("btn_linear");
+    document.getElementById("selectedColor").textContent = button.dataset.color;
+  });
+});
+
+document.querySelectorAll(".memory-btn").forEach((button) => {
+  button.addEventListener("click", () => {
+    document
+      .querySelectorAll(".memory-btn")
+      .forEach((btn) => btn.classList.remove("btn_linear"));
+    button.classList.add("btn_linear");
+    document.getElementById("selectedMemory").textContent =
+      button.dataset.memory;
+  });
+});
+
+document.querySelectorAll(".tab-btn").forEach((button) => {
+  button.addEventListener("click", () => {
+    document
+      .querySelectorAll(".tab-content")
+      .forEach((content) => content.classList.add("hidden"));
+
+    document.getElementById(button.dataset.tab).classList.remove("hidden");
+
+    document.querySelectorAll(".tab-btn").forEach((btn) => {
+      btn.classList.remove("text-black", "border-black");
+      btn.classList.add("text-gray-500", "border-transparent");
+    });
+    button.classList.remove("text-gray-500", "border-transparent");
+    button.classList.add("text-black", "border-black");
+  });
+});
