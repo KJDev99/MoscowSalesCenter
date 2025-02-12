@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moskow Sales Center | Form</title>
+
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="../index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header
+      class="flex items-center max-w-[1294px] mx-auto px-4 pt-2 animate-fadeIn max-md:flex-col max-md:border-b max-md:border-[#C1C1C1] max-md:pb-7 max-md:rounded-b-lg"
+    >
+      <a href="../index.html" class="md:pr-14 logo">
+        <img class="h-auto w-auto" src="../img/icons/logo.svg" alt="Logo" />
+      </a>
+      <nav
+        class="flex gap-[22px] pr-[115px] max-md:flex-col max-md:top-[-400px] max-md:transition-all max-md:fixed left-1/2 top-1/2 max-md:transform max-md:-translate-x-1/2 max-md:-translate-y-1/2 max-md:w-[80%] max-md:bg-white flex max-md:justify-center max-md:items-center text-black max-md:p-10 max-md:gap-5 max-md:shadow-lg max-md:rounded-lg z-[999]"
+      >
+        <button
+          class="absolute top-2 right-4 text-2xl cursor-pointer md:hidden closeMenu"
+        >
+          &times;
+        </button>
+        <a class="text-sm text-sm md:pr-5" href="../index.html">ГЛАВНАЯ</a>
+        <div class="relative max-md:hidden">
+          <div
+            class="flex items-center pt-[0.3px] cursor-pointer"
+            id="catalogButton"
+          >
+            <a class="text-sm" href="#">КАТАЛОГ</a>
+            <img
+              class="w-auto h-auto pl-[6px] pt-[4px] transition-transform duration-300"
+              id="arrowIcon"
+              src="../img/icons/arrowbottom.svg"
+              alt="Каталог"
+            />
+          </div>
+
+          <div
+            id="catalogModal"
+            class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg overflow-hidden opacity-0 scale-95 transition-all duration-300 z-10"
+          >
+            <ul class="py-2">
+              <li class="px-4 py-2 hover:bg-gray-100 font-semibold text-xl">
+                Brand
+              </li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                <a href="../pages/catalog.html"> Samsung </a>
+              </li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                <a href="../pages/catalog.html"> iPhone </a>
+              </li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                <a href="../pages/catalog.html"> Remdi </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <a class="text-sm text-sm" href="../pages/news.html">НОВОСТИ</a>
+        <a class="text-sm text-sm" href="../pages/manufacturers.html"
+          >ПРОИЗВОДИТЕЛИ</a
+        >
+        <a class="text-sm text-sm" href="../pages/contact.html">КОНТАКТЫ</a>
+      </nav>
+
+      <div class="flex justify-between w-full mt-5 md:hidden">
+        <div class="flex gap-3 justify-start items-center">
+          <img src="../img/icons/menu.svg" class="menuOpen cursor-pointer" />
+          <a href="tel:+84951504072">
+            <img src="../img/icons/phone.svg" alt="" />
+          </a>
+        </div>
+        <div class="flex items-center relative px-4 w-[244px] input_linear">
+          <img src="../img/icons/search.svg" alt="" class="w-4 h-4" />
+          <input
+            type="text"
+            class="max-md:w-full pl-2 h-12 rounded-full text-[#454545]"
+            placeholder="Поиск"
+          />
+        </div>
+      </div>
+
+      <div
+        class="flex items-center max-md:fixed max-md:bottom-0 max-md:left-0 md:hidden w-full bg-[#f6f6f6] border border-t-[#C1C1C1] px-5 py-4 z-[100] justify-between"
+      >
+        <a
+          href="../index.html"
+          class="flex flex-col items-center justify-center"
+        >
+          <img
+            src="../img/icons/mobilemenuicons/home.svg"
+            alt="Compare"
+            class="pl-[0px]"
+          />
+          <p class="text-[13px] leading-none pt-[10px]">Главная</p>
+        </a>
+        <a href="../" class="flex flex-col items-center justify-center">
+          <img
+            src="../img/icons/mobilemenuicons/catalogact.svg"
+            alt="Compare"
+            class="pl-[0px]"
+          />
+          <p class="text-[13px] leading-none pt-[10px] text_linear">Каталог</p>
+        </a>
+        <a
+          href="../pages/saved.html"
+          class="flex flex-col items-center justify-center"
+        >
+          <img
+            src="../img/icons/mobilemenuicons/mobilelike.svg"
+            alt="Compare"
+            class="pl-[0px]"
+          />
+          <p class="text-[13px] leading-none pt-[10px]">Избранное</p>
+        </a>
+        <a
+          href="tel:+84951504072"
+          class="flex flex-col items-center justify-center"
+        >
+          <img
+            src="../img/icons/mobilemenuicons/mobilephone.svg"
+            alt="Compare"
+            class="pl-[0px]"
+          />
+          <p class="text-[13px] leading-none pt-[10px]">Позвонить</p>
+        </a>
+      </div>
+    </header>
+
+    <main
+      id="#main"
+      class="max-w-[1294px] mx-auto px-4 pt-2 animate-fadeIn max-md:w-full"
+    >
+      <section class="w-full text-[#454545] mt-8 max-md:mt-1">
+        <ul class="py-2">
+          <li class="px-2 py-2 font-bold text-xl">Ноутбуки</li>
+          <li
+            class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[rgba(0,0,0,0.5)]"
+          >
+            <a href="./catalog.html"> Ноутбуки Rikor  </a>
+          </li>
+          <li
+            class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[rgba(0,0,0,0.5)]"
+          >
+            <a href="./catalog.html"> Ноутбуки Гравитон Ноутбуки Irbis  </a>
+          </li>
+          <li
+            class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[rgba(0,0,0,0.5)]"
+          >
+            <a href="./catalog.html"> Ноутбуки iRU Ноутбуки F-Plus  </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="../app.js"></script>
+  </body>
+</html>
