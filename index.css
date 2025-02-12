@@ -112,3 +112,54 @@ input {
 .showMenu {
   top: 250px;
 }
+
+input[type="radio"],
+input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  background: white;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+input[type="radio"]:checked,
+input[type="checkbox"]:checked {
+  border: none;
+  background: linear-gradient(85.64deg, #a155d3 6.2%, #277fe9 101.54%);
+}
+
+input[type="radio"]:checked::before,
+input[type="checkbox"]:checked::before {
+  content: "\2713";
+  font-size: 14px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btn_linear {
+  border: 1px solid transparent;
+  background: linear-gradient(#f8f9fa, #f8f9fa 0) padding-box,
+    linear-gradient(to right, #a155d3, #277fe9) border-box;
+}
+
+.text_linear {
+  background: linear-gradient(85.64deg, #a155d3 6.2%, #277fe9 101.54%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.input_linear {
+  border: 1px solid transparent;
+  border-radius: 2em;
+  font-size: 14px;
+  background: linear-gradient(#f8f9fa, #f8f9fa 0) padding-box,
+    linear-gradient(to right, #a155d3, #277fe9) border-box;
+}

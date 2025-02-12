@@ -106,9 +106,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Har bir slider uchun funksiyani chaqirish
   initializeSlider("slider1", "indicators1");
   initializeSlider("slider2", "indicators2");
+  initializeSlider("slider3", "indicators3");
+  initializeSlider("slider4", "indicators4");
+  initializeSlider("slider5", "indicators5");
+  initializeSlider("slider6", "indicators6");
+  initializeSlider("slider7", "indicators7");
+  initializeSlider("slider8", "indicators8");
+  initializeSlider("slider9", "indicators9");
 });
 
 let menuOpen = document.querySelector(".menuOpen");
@@ -121,3 +127,59 @@ menuOpen.addEventListener("click", function () {
 closeMenu.addEventListener("click", function () {
   document.querySelector("nav").classList.remove("showMenu");
 });
+
+function toggleView(view) {
+  const container = document.getElementById("productContainer");
+  container.className =
+    view === "grid" ? "grid grid-cols-3 gap-4" : "flex flex-col gap-4";
+
+  document
+    .getElementById("gridIconActive")
+    .classList.toggle("hidden", view !== "grid");
+  document
+    .getElementById("gridIcon")
+    .classList.toggle("hidden", view === "grid");
+  document
+    .getElementById("listIconActive")
+    .classList.toggle("hidden", view !== "list");
+  document
+    .getElementById("listIcon")
+    .classList.toggle("hidden", view === "list");
+}
+
+function toggleAccordion(id, arrowId) {
+  const element = document.getElementById(id);
+  const arrow = document.getElementById(arrowId);
+  if (element.classList.contains("hidden")) {
+    element.classList.remove("hidden");
+    setTimeout(() => {
+      element.classList.remove("opacity-0");
+    }, 10);
+  } else {
+    element.classList.add("opacity-0");
+    setTimeout(() => {
+      element.classList.add("hidden");
+    }, 300);
+  }
+  arrow.classList.toggle("rotate-180");
+}
+
+function toggleFilter() {
+  const filterPanel = document.getElementById("filterPanel");
+  const productList = document.getElementById("productList");
+  if (filterPanel.classList.contains("max-md:hidden")) {
+    filterPanel.classList.remove("max-md:hidden");
+    productList.classList.add("max-md:hidden");
+  } else {
+    productList.classList.remove("max-md:hidden");
+    filterPanel.classList.add("max-md:hidden");
+  }
+}
+
+function updateFileName() {
+  const input = document.getElementById("file-input");
+  const label = document.getElementById("file-label");
+  if (input.files.length > 0) {
+    label.textContent = input.files[0].name;
+  }
+}
