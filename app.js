@@ -36,14 +36,14 @@ const catalogModal = document.getElementById("catalogModal");
 const arrowIcon = document.getElementById("arrowIcon");
 
 catalogButton.addEventListener("click", () => {
-  const isOpen = catalogModal.classList.contains("opacity-100");
+  const isOpen = catalogModal.classList.contains("block");
 
   if (isOpen) {
-    catalogModal.classList.replace("opacity-100", "opacity-0");
+    catalogModal.classList.replace("block", "hidden");
     catalogModal.classList.replace("scale-100", "scale-95");
     arrowIcon.classList.remove("rotate-180");
   } else {
-    catalogModal.classList.replace("opacity-0", "opacity-100");
+    catalogModal.classList.replace("hidden", "block");
     catalogModal.classList.replace("scale-95", "scale-100");
     arrowIcon.classList.add("rotate-180");
   }
@@ -54,7 +54,7 @@ document.addEventListener("click", (event) => {
     !catalogButton.contains(event.target) &&
     !catalogModal.contains(event.target)
   ) {
-    catalogModal.classList.replace("opacity-100", "opacity-0");
+    catalogModal.classList.replace("block", "hidden");
     catalogModal.classList.replace("scale-100", "scale-95");
     arrowIcon.classList.remove("rotate-180");
   }
@@ -62,7 +62,7 @@ document.addEventListener("click", (event) => {
 
 catalogModal.querySelectorAll("li").forEach((item) => {
   item.addEventListener("click", () => {
-    catalogModal.classList.replace("opacity-100", "opacity-0");
+    catalogModal.classList.replace("block", "hidden");
     catalogModal.classList.replace("scale-100", "scale-95");
     arrowIcon.classList.remove("rotate-180");
   });

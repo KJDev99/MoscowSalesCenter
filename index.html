@@ -40,7 +40,7 @@
 
           <div
             id="catalogModal"
-            class="absolute left-0 mt-2 w-max bg-white shadow-lg rounded-lg overflow-hidden opacity-0 scale-95 transition-all duration-300 z-10"
+            class="absolute left-0 mt-2 w-max bg-white shadow-lg rounded-lg overflow-hidden scale-95 transition-all duration-300 hidden"
           >
             <ul class="py-2">
               <li class="px-2 py-2 font-bold text-xl">Ноутбуки</li>
@@ -98,7 +98,7 @@
           <a href="tel:+84951504072"> Заказать звонок </a>
         </button>
         <div class="flex gap-5 ml-10">
-          <a href="#">
+          <a href="./pages/search.html">
             <img src="./img/icons/search.svg" alt="Search" class="pl-2" />
             <p class="text-[13px] leading-none pt-[9px]">Поиск</p>
           </a>
@@ -668,7 +668,7 @@
         </div>
       </section>
 
-      <section id="contacts" class="pb-16 pt-16 max-md:pt-10 max-md:pb-[150px]">
+      <section id="contacts" class="pb-16 pt-16 max-md:pt-6 max-md:pb-[150px]">
         <div class="flex gap-10 pb-5 max-md:pb-6">
           <div class="flex flex-col max-md:w-full">
             <h3 class="text-[42px] pb-7 max-md:text-[20px] max-md:pb-4">
@@ -713,7 +713,7 @@
                   </div>
                 </div>
 
-                <div class="pt-4 w-full">
+                <form class="pt-4 w-full">
                   <div class="pb-4">
                     <input
                       type="text"
@@ -749,7 +749,17 @@
                       placeholder="Комментарии"
                     ></textarea>
                   </div>
-                </div>
+
+                  <div
+                    class="flex max-md:flex max-md:items-center max-md:justify-center"
+                  >
+                    <input
+                      type="submit"
+                      value="Отправить"
+                      class="w-[190px] h-[50px] pb-[2px] text-lg bg-gradient-to-r to-blue-500 from-purple-500 rounded-full text-white custom-animation max-md:mx-auto"
+                    />
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -785,13 +795,6 @@
               ></iframe>
             </div>
           </div>
-        </div>
-        <div class="flex max-md:flex max-md:items-center max-md:justify-center">
-          <button
-            class="w-[190px] h-[50px] pb-[2px] text-lg bg-gradient-to-r to-blue-500 from-purple-500 rounded-full text-white custom-animation max-md:mx-auto"
-          >
-            Отправить
-          </button>
         </div>
       </section>
     </main>
