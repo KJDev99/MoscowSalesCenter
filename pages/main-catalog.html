@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moskow Sales Center | News</title>
+
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="../index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header
+      class="flex items-center max-w-[1294px] mx-auto px-4 pt-2 animate-fadeIn max-md:flex-col max-md:border-b max-md:border-[#C1C1C1] max-md:pb-7 max-md:rounded-b-lg"
+    >
+      <a href="../index.html" class="md:pr-14 logo">
+        <img class="h-auto w-auto" src="../img/icons/logo.svg" alt="Logo" />
+      </a>
+      <nav
+        class="flex gap-[22px] pr-[115px] max-md:flex-col max-md:top-[-400px] max-md:transition-all max-md:fixed left-1/2 top-1/2 max-md:transform max-md:-translate-x-1/2 max-md:-translate-y-1/2 max-md:w-[80%] max-md:bg-white flex max-md:justify-center max-md:items-center text-black max-md:p-10 max-md:gap-5 max-md:shadow-lg max-md:rounded-lg z-[999]"
+      >
+        <button
+          class="absolute top-2 right-4 text-2xl cursor-pointer md:hidden closeMenu"
+        >
+          &times;
+        </button>
+        <a class="text-sm text-sm md:pr-5" href="../index.html">ГЛАВНАЯ</a>
+        <div class="relative max-md:hidden">
+          <div
+            class="flex items-center pt-[0.3px] cursor-pointer"
+            id="catalogButton"
+          >
+            <a class="text-sm" href="#">КАТАЛОГ</a>
+            <img
+              class="w-auto h-auto pl-[6px] pt-[4px] transition-transform duration-300"
+              id="arrowIcon"
+              src="../img/icons/arrowbottom.svg"
+              alt="Каталог"
+            />
+          </div>
+
+          <div
+            id="catalogModal"
+            class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg overflow-hidden scale-95 transition-all duration-300 hidden"
+          >
+            <ul class="py-2">
+              <li class="px-4 py-2 hover:bg-gray-100 font-semibold text-xl">
+                Brand
+              </li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                <a href="../pages/main-catalog.html"> Samsung </a>
+              </li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                <a href="../pages/main-catalog.html"> iPhone </a>
+              </li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                <a href="../pages/main-catalog.html"> Remdi </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <a class="text-sm text-sm" href="../pages/news.html">НОВОСТИ</a>
+        <a class="text-sm text-sm" href="../pages/manufacturers.html"
+          >ПРОИЗВОДИТЕЛИ</a
+        >
+        <a class="text-sm text-sm" href="../pages/contact.html">КОНТАКТЫ</a>
+      </nav>
+
+      <div class="flex justify-between w-full mt-5 md:hidden">
+        <div class="flex gap-3 justify-start items-center">
+          <img src="../img/icons/menu.svg" class="menuOpen cursor-pointer" />
+          <a href="tel:+84951504072">
+            <img src="../img/icons/phone.svg" alt="" />
+          </a>
+        </div>
+        <div class="flex items-center relative px-4 w-[244px] input_linear">
+          <img src="../img/icons/search.svg" alt="" class="w-4 h-4" />
+          <input
+            type="text"
+            class="max-md:w-full pl-2 h-12 rounded-full text-[#454545]"
+            placeholder="Поиск"
+          />
+        </div>
+      </div>
+
+      <div class="flex items-center max-md:hidden">
+        <button
+          id="animatedButton"
+          class="w-[154px] h-[48px] pb-[2px] bg-gradient-to-r to-blue-500 from-purple-500 text-white rounded-full cursor-pointer"
+        >
+          <a href="tel:+84951504072"> Заказать звонок </a>
+        </button>
+        <div class="flex gap-5 ml-10">
+          <a href="./search.html">
+            <img src="../img/icons/search.svg" alt="Search" class="pl-2" />
+            <p class="text-[13px] leading-none pt-[9px]">Поиск</p>
+          </a>
+          <a href="../pages/compare.html">
+            <img
+              src="../img/icons/compaireng.svg"
+              alt="Compare"
+              class="pl-[18px]"
+            />
+            <p class="text-[13px] leading-none pt-[10px]">Сравнить</p>
+          </a>
+          <a href="../pages/saved.html">
+            <img
+              src="../img/icons/menulike.svg"
+              alt="Favorite"
+              class="pl-6 relative"
+            />
+            <p class="text-[13px] leading-none pt-[7px] absolute">Избранное</p>
+          </a>
+        </div>
+      </div>
+      <div
+        class="flex items-center max-md:fixed max-md:bottom-0 max-md:left-0 md:hidden w-full bg-[#f6f6f6] border border-t-[#C1C1C1] px-5 py-4 z-[100] justify-between"
+      >
+        <a
+          href="../index.html"
+          class="flex flex-col items-center justify-center"
+        >
+          <img
+            src="../img/icons/mobilemenuicons/home.svg"
+            alt="Compare"
+            class="pl-[0px]"
+          />
+          <p class="text-[13px] leading-none pt-[10px]">Главная</p>
+        </a>
+        <a
+          href="./catalogMobile.html"
+          class="flex flex-col items-center justify-center"
+        >
+          <img
+            src="../img/icons/mobilemenuicons/catalog.svg"
+            alt="Compare"
+            class="pl-[0px]"
+          />
+          <p class="text-[13px] leading-none pt-[10px]">Каталог</p>
+        </a>
+        <a
+          href="../pages/saved.html"
+          class="flex flex-col items-center justify-center"
+        >
+          <img
+            src="../img/icons/mobilemenuicons/mobilelike.svg"
+            alt="Compare"
+            class="pl-[0px]"
+          />
+          <p class="text-[13px] leading-none pt-[10px]">Избранное</p>
+        </a>
+        <a
+          href="tel:+84951504072"
+          class="flex flex-col items-center justify-center"
+        >
+          <img
+            src="../img/icons/mobilemenuicons/mobilephone.svg"
+            alt="Compare"
+            class="pl-[0px]"
+          />
+          <p class="text-[13px] leading-none pt-[10px]">Позвонить</p>
+        </a>
+      </div>
+    </header>
+
+    <main
+      id="#main"
+      class="max-w-[1294px] mx-auto px-4 pt-2 animate-fadeIn max-md:w-full"
+    >
+      <section class="w-full text-[#454545] mt-8 max-md:mt-1">
+        <a class="text-[#ababab]" href="../index.html">Главная</a> / Каталог
+      </section>
+      <section id="contacts" class="pb-16 pt-16">
+        <div
+          class="grid grid-cols-2 max-md:grid-cols-1 gap-x-5 gap-y-10 max-md:gap-x-2 max-md:gap-y-5"
+        >
+          <a
+            href="./catalog.html"
+            class="katalog_shadow max-md:rounded-[16px] flex h-[362px] rounded-[32px] justify-between relative group max-md:h-[190px]"
+          >
+            <img
+              src="../img/category/category1.svg"
+              alt=""
+              class="h-max max-md:max-w-[220px] max-md:h-full md:mt-[-53px]"
+            />
+            <div
+              class="flex flex-col mr-[10px] text-right items-end max-md:w-[120px] absolute right-3 h-full"
+            >
+              <span class="mt-[60px] max-md:mt-5">Ноутбуки</span>
+              <h3
+                class="text-[32px] font-medium md:mt-[-12px] max-md:text-xs md:leading-[40px]"
+              >
+                Создан для вас
+              </h3>
+              <ul
+                class="text-[#00000080] grow-1 flex flex-col justify-center opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible max-md:hidden"
+              >
+                <li class="mb-4">Ноутбуки Rikor</li>
+                <li class="mb-4">Ноутбуки Гравитон Ноутбуки Irbis</li>
+                <li class="mb-4">Ноутбуки iRU Ноутбуки F-Plus</li>
+                <li class="mb-4">
+                  Ноутбуки Бештау Ноутбуки ICL Ноутбуки Inferit
+                </li>
+              </ul>
+            </div>
+          </a>
+          <a
+            href="./catalog.html"
+            class="katalog_shadow max-md:rounded-[16px] flex h-[362px] rounded-[32px] justify-between relative group max-md:h-[190px]"
+          >
+            <img
+              src="../img/category/category2.svg"
+              alt=""
+              class="h-max md:mt-[-53px] md:ml-[-40px] max-md:h-full max-md:max-w-[220px]"
+            />
+            <div
+              class="flex flex-col mr-[10px] text-right items-end max-md:w-[120px] absolute right-3 h-full"
+            >
+              <span class="mt-[60px] max-md:mt-5">Моноблок</span>
+              <h3
+                class="text-[32px] font-thin md:mt-[-12px] max-md:text-xs md:leading-[40px]"
+              >
+                Всё в одном
+              </h3>
+              <ul
+                class="text-[#00000080] grow-1 flex flex-col justify-center opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible max-md:hidden"
+              >
+                <li class="mb-2">Моноблоки IRBIS</li>
+                <li class="mb-2">Моноблоки RDW</li>
+                <li class="mb-2">Моноблоки RIKOR</li>
+                <li class="mb-2">Моноблоки Гравитон</li>
+                <li class="mb-2">Моноблоки KVADRA</li>
+                <li class="mb-2">Моноблоки Бештау</li>
+                <li class="mb-2">Моноблоки ICL</li>
+              </ul>
+            </div>
+          </a>
+          <a
+            href="./catalog.html"
+            class="katalog_shadow max-md:rounded-[16px] flex h-[362px] rounded-[32px] justify-between relative group max-md:h-[190px]"
+          >
+            <img
+              src="../img/category/category33.svg"
+              alt=""
+              class="h-[305px] md:mt-[53px] max-md:h-full max-md:max-w-[160px]"
+            />
+            <div
+              class="flex flex-col mr-[10px] text-right items-end max-md:w-[120px] absolute right-3 h-full"
+            >
+              <span class="mt-[60px] max-md:mt-5">Планшеты</span>
+              <h3
+                class="text-[32px] font-thin md:mt-[-12px] max-md:text-xs md:leading-[40px]"
+              >
+                Всегда под рукой
+              </h3>
+              <ul
+                class="text-[#00000080] grow-1 flex flex-col mt-6 opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible max-md:hidden"
+              >
+                <li class="mb-2">Планшеты Kvadra</li>
+                <li class="mb-2">Планшеты Rikor</li>
+                <li class="mb-2">Планшеты F-Plus</li>
+              </ul>
+            </div>
+          </a>
+          <a
+            href="./catalog.html"
+            class="katalog_shadow max-md:rounded-[16px] flex h-[362px] rounded-[32px] justify-between relative group max-md:h-[190px]"
+          >
+            <img
+              src="../img/category/category4.svg"
+              alt=""
+              class="h-max md:mt-[-13px] max-md:h-full max-md:max-w-[170px]"
+            />
+            <div
+              class="flex flex-col mr-[10px] text-right items-end max-md:w-[120px] absolute right-3 h-full md:max-w-[280px]"
+            >
+              <span class="mt-[60px] max-md:mt-5">Мыши</span>
+              <h3
+                class="text-[32px] font-thin md:mt-[-12px] max-md:text-xs md:leading-[40px]"
+              >
+                Управляй моментом
+              </h3>
+              <ul
+                class="text-[#00000080] grow-1 flex flex-col mt-5 opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible max-md:hidden"
+              >
+                <li class="mb-2">Мыши Бештау</li>
+              </ul>
+            </div>
+          </a>
+          <a
+            href="./catalog.html"
+            class="katalog_shadow max-md:rounded-[16px] flex h-[362px] rounded-[32px] justify-between relative group max-md:h-[190px]"
+          >
+            <img
+              src="../img/category/category5.svg"
+              alt=""
+              class="h-max md:mt-[20px] md:ml-[20px] max-md:h-full max-md:max-w-[180px] max-md:ml-4"
+            />
+            <div
+              class="flex flex-col mr-[10px] text-right items-end max-md:w-[120px] absolute right-3 h-full md:max-w-[280px]"
+            >
+              <span class="mt-[28px] max-md:mt-5">Компьюетры</span>
+              <h3
+                class="text-[32px] font-thin md:mt-[-12px] max-md:text-xs md:leading-[40px]"
+              >
+                Решает любые задачи
+              </h3>
+              <ul
+                class="text-[#00000080] grow-1 flex flex-col justify-center opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible max-md:hidden"
+              >
+                <li class="mb-2">Компьютеры Inferit Компьютеры Irbis</li>
+                <li class="mb-2">Компьютеры RDW</li>
+                <li class="mb-2">Компьютеры Гравитон</li>
+                <li class="mb-2">Компьютеры KVADRA</li>
+                <li class="mb-2">Компьютеры RIKOR</li>
+                <li class="mb-2">Компьютеры Бештау</li>
+                <li class="mb-2">Компьютеры ICL</li>
+              </ul>
+            </div>
+          </a>
+          <a
+            href="./catalog.html"
+            class="katalog_shadow max-md:rounded-[16px] flex h-[362px] rounded-[32px] justify-between relative group max-md:h-[190px]"
+          >
+            <img
+              src="../img/category/category6.svg"
+              alt=""
+              class="h-max md:mt-[13px] md:ml-[-40px] max-md:h-full max-md:max-w-[220px]"
+            />
+            <div
+              class="flex flex-col mr-[10px] text-right items-end absolute right-3 h-full md:max-w-[200px]"
+            >
+              <span class="mt-[60px] max-md:mt-5">Клавиатуры</span>
+              <h3
+                class="text-[32px] font-thin md:mt-[-12px] max-md:text-xs md:leading-[40px]"
+              >
+                Мастерство в нажатии
+              </h3>
+              <ul
+                class="text-[#00000080] grow-1 flex flex-col mt-5 opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible max-md:hidden"
+              >
+                <li class="mb-2">Клавиатура Бештау</li>
+              </ul>
+            </div>
+          </a>
+          <a
+            href="./catalog.html"
+            class="katalog_shadow max-md:rounded-[16px] flex h-[362px] rounded-[32px] justify-between relative group max-md:h-[190px]"
+          >
+            <img
+              src="../img/category/category7.svg"
+              alt=""
+              class="h-max md:mt-[45px] md:ml-[0px] max-md:h-full max-md:max-w-[180px]"
+            />
+            <div
+              class="flex flex-col mr-[10px] text-right items-end max-md:w-[120px] absolute right-3 h-full md:max-w-[225px]"
+            >
+              <span class="mt-[30px] max-md:mt-5">Мониторы</span>
+              <h3
+                class="text-[32px] font-thin md:mt-[-12px] max-md:text-xs md:leading-[40px]"
+              >
+                Идеальное изображение
+              </h3>
+              <ul
+                class="text-[#00000080] grow-1 flex flex-col justify-center opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible max-md:hidden"
+              >
+                <li class="mb-2">Мониторы IRBIS</li>
+                <li class="mb-2">Мониторы RDW</li>
+                <li class="mb-2">Мониторы RIKOR</li>
+                <li class="mb-2">Мониторы Гравитон</li>
+                <li class="mb-2">Мониторы ICL</li>
+                <li class="mb-2">Мониторы Бештау</li>
+              </ul>
+            </div>
+          </a>
+          <a
+            href="./catalog.html"
+            class="katalog_shadow max-md:rounded-[16px] flex h-[362px] rounded-[32px] justify-between relative group max-md:h-[190px]"
+          >
+            <img
+              src="../img/category/category8.svg"
+              alt=""
+              class="h-max md:mt-[100px] md:ml-[20px] max-md:h-full max-md:max-w-[200px] max-md:mt-5"
+            />
+            <div
+              class="flex flex-col mr-[10px] text-right items-end absolute right-3 h-full md:max-w-[220px]"
+            >
+              <span class="mt-[60px] max-md:mt-5">Мини ПК</span>
+              <h3
+                class="text-[32px] font-thin md:mt-[-12px] max-md:text-xs md:leading-[40px]"
+              >
+                Технологии на ладони
+              </h3>
+              <ul
+                class="text-[#00000080] grow-1 flex flex-col mt-5 opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible max-md:hidden"
+              >
+                <li class="mb-2">Мини ПК RDW Мини</li>
+                <li class="mb-2">ПК Гравитон Мини</li>
+                <li class="mb-2">ПК KVADRA</li>
+              </ul>
+            </div>
+          </a>
+          <a
+            href="./catalog.html"
+            class="katalog_shadow max-md:rounded-[16px] flex h-[362px] rounded-[32px] justify-between relative group max-md:h-[190px]"
+          >
+            <img
+              src="../img/category/category9.svg"
+              alt=""
+              class="h-max md:mt-[3px] md:ml-[0px] max-md:h-full max-md:max-w-[220px]"
+            />
+            <div
+              class="flex flex-col mr-[10px] text-right items-end absolute right-3 h-full md:max-w-[240px]"
+            >
+              <span class="mt-[60px] max-md:mt-5">Системы хранения</span>
+              <h3
+                class="text-[32px] font-thin md:mt-[-12px] max-md:text-xs md:leading-[40px]"
+              >
+                Данные в безопасности
+              </h3>
+              <ul
+                class="text-[#00000080] grow-1 flex flex-col mt-5 opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible max-md:hidden"
+              >
+                <li class="mb-2">СХД Гравитон</li>
+                <li class="mb-2">СХД Ядро</li>
+              </ul>
+            </div>
+          </a>
+          <a
+            href="./catalog.html"
+            class="katalog_shadow max-md:rounded-[16px] flex h-[362px] rounded-[32px] justify-between relative group max-md:h-[190px]"
+          >
+            <img
+              src="../img/category/category10.svg"
+              alt=""
+              class="h-max md:mt-[53px] md:ml-[0px] max-md:h-full max-md:max-w-[220px] max-md:mt-5"
+            />
+            <div
+              class="flex flex-col mr-[10px] text-right items-end absolute right-3 h-full"
+            >
+              <span class="mt-[60px] max-md:mt-5">Сетевое оборудование</span>
+              <h3
+                class="text-[32px] font-thin md:mt-[-12px] max-md:text-xs md:leading-[40px]"
+              >
+                Сеть без границ
+              </h3>
+              <ul
+                class="text-[#00000080] grow-1 flex flex-col mt-5 opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible max-md:hidden"
+              >
+                <li class="mb-2">Сетевое оборудование Kvadra</li>
+                <li class="mb-2">Сетевое оборудование Элтекс</li>
+              </ul>
+            </div>
+          </a>
+          <a
+            href="./catalog.html"
+            class="katalog_shadow max-md:rounded-[16px] flex h-[362px] rounded-[32px] justify-between relative group max-md:h-[190px]"
+          >
+            <img
+              src="../img/category/category11.svg"
+              alt=""
+              class="h-max md:mt-[-53px] md:ml-[-70px] max-md:h-full max-md:max-w-[220px]"
+            />
+            <div
+              class="flex flex-col mr-[10px] text-right items-end max-md:w-[120px] absolute right-3 h-full md:max-w-[290px]"
+            >
+              <span class="mt-[30px] max-md:mt-5">Серверное оборудование</span>
+              <h3
+                class="text-[32px] font-thin md:mt-[-12px] max-md:text-xs md:leading-[40px]"
+              >
+                Бесперебойная работа
+              </h3>
+              <ul
+                class="text-[#00000080] grow-1 flex flex-col justify-center opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible max-md:hidden"
+              >
+                <li class="mb-2">Серверы RIKOR</li>
+                <li class="mb-2">Серверы Гравитон</li>
+                <li class="mb-2">Серверы KVADRA</li>
+                <li class="mb-2">Серверы Ядро</li>
+                <li class="mb-2">Серверы Бештау</li>
+                <li class="mb-2">Серверы RDW</li>
+                <li class="mb-2">Серверы ICL</li>
+              </ul>
+            </div>
+          </a>
+          <a
+            href="./catalog.html"
+            class="katalog_shadow max-md:rounded-[16px] flex h-[362px] rounded-[32px] justify-between relative group max-md:h-[190px]"
+          >
+            <img
+              src="../img/category/category12.svg"
+              alt=""
+              class="h-max md:mt-[53px] md:ml-[-40px] max-md:h-full max-md:max-w-[180px] max-md:mt-5"
+            />
+            <div
+              class="flex flex-col mr-[10px] text-right items-end max-md:w-[120px] absolute right-3 h-full md:max-w-[220px]"
+            >
+              <span class="mt-[60px] max-md:mt-5">Телефония</span>
+              <h3
+                class="text-[32px] font-thin md:mt-[-12px] max-md:text-xs md:leading-[40px]"
+              >
+                Объединяем людей
+              </h3>
+              <ul
+                class="text-[#00000080] grow-1 flex flex-col mt-5 opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible max-md:hidden"
+              >
+                <li class="mb-2">Телефония Элтекс</li>
+                <li class="mb-2">Телефония ФЛАТ</li>
+                <li class="mb-2">Телефония IVA</li>
+              </ul>
+            </div>
+          </a>
+        </div>
+      </section>
+      <section class="pb-[90px]">
+        <p class="text-center text-xl">
+          Текст текст текст текст Текст текст текст текст Текст текст текст
+          текст Текст текст текст текст Текст текст текст текстТекст текст текст
+          текст Текст текст текст текст Текст текст текст текстТекст текст текст
+          текст Текст текст текст текст aa
+        </p>
+      </section>
+    </main>
+
+    <footer class="pb-8 pt-2 bg-[#F8F9FA] max-md:hidden">
+      <div class="max-w-[1296px] mx-auto border-t-[1px] border-[#D2DAD7] pb-6">
+        <div
+          class="px-4 pt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12"
+        >
+          <div>
+            <a
+              ><img src="../img/icons/logo.svg" alt="Логотип" class="mb-3"
+            /></a>
+            <a href="#" class="text-lg">Сайт</a>
+            <p class="mt-3">8 (495) 150-40-72</p>
+          </div>
+
+          <div>
+            <h3 style="font-family: 'MyFontPro'" class="text-[22px] mb-3">
+              Каталог
+            </h3>
+            <ul>
+              <li class="mb-2 flex items-center gap-3">
+                <a href="#" class="text-lg block pb-[10px]">Ноутбуки</a>
+              </li>
+              <li class="mb-2 flex items-center gap-3">
+                <a href="#" class="text-lg block pb-[10px]">Мониторы</a>
+              </li>
+              <li class="mb-2 flex items-center gap-3">
+                <a href="#" class="text-lg block">Планшеты</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 style="font-family: 'MyFontPro'" class="text-[22px] mb-4">
+              Компания
+            </h3>
+            <ul>
+              <li class="mb-2 flex items-center gap-3">
+                <a href="#" class="text-lg pb-[10px] block">Контакты</a>
+              </li>
+              <li class="mb-2 flex items-center gap-3">
+                <a href="#" class="text-lg block">Производители</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="text-lg block pb-[10px]">info@mossales.ru</p>
+            <p class="text-lg block pb-[10px]">Пн - Пт: 10.00 - 18.00</p>
+            <p class="text-lg block">Остаповский пр., 5, стр. 1,БЦ «Контакт»</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="../app.js"></script>
+  </body>
+</html>
