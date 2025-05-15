@@ -172,3 +172,46 @@ input[type="checkbox"]:checked::before {
     display: block !important;
   }
 }
+
+/* крестик */
+.cross-inner {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  cursor: pointer;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 2;
+  overflow: hidden;
+}
+.cross {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.cross span {
+  display: block;
+  background: #595959;
+  border-radius: 2px;
+}
+.cross span:nth-child(1) {
+  height: 80%;
+  width: 4px;
+  position: absolute;
+  top: 9%;
+  left: 18px;
+  transition-delay: 0s;
+}
+.cross span:nth-child(2) {
+  width: 80%;
+  height: 4px;
+  position: absolute;
+  left: 9%;
+  top: 18px;
+  transition-delay: 0.25s;
+}

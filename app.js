@@ -225,3 +225,21 @@ document.querySelectorAll(".tab-btn").forEach((button) => {
     button.classList.add("text-black", "border-black");
   });
 });
+document.querySelectorAll(".call-btn").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    document.getElementById("popupCallback").classList.remove("hidden");
+  });
+});
+
+// Close popup
+document.getElementById("closePopup").addEventListener("click", () => {
+  document.getElementById("popupCallback").classList.add("hidden");
+});
+
+// Close popup clicking outside the inner content
+document.getElementById("popupCallback").addEventListener("click", (e) => {
+  if (e.target === e.currentTarget) {
+    document.getElementById("popupCallback").classList.add("hidden");
+  }
+});
