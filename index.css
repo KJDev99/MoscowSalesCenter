@@ -1,32 +1,16 @@
-@font-face {
-  font-family: "MyFont";
-  src: url("./fonts/Gotham Pro/gothampro_medium.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "MyFontLight";
-  src: url("./fonts/Gotham Pro/gothampro_light.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "MyFontPro";
-  src: url("./fonts/Gotham Pro/gothampro.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: "Inter", sans-serif;
+}
 h1,
 h2,
 h3 {
-  font-family: "MyFont", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 h2 {
   font-weight: 700;
@@ -38,7 +22,7 @@ html {
 
 a,
 p {
-  font-family: "MyFontLight", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .input-wrapper {
