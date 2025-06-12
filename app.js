@@ -1,35 +1,187 @@
+// document.addEventListener("DOMContentLoaded", function () {
+//   const carousel = document.getElementById("carousel");
+//   const inner = carousel.querySelector(".carousel-inner");
+//   const items = carousel.querySelectorAll(".carousel-item");
+//   const prevButton = carousel.querySelector("#prevButton");
+//   const nextButton = carousel.querySelector("#nextButton");
+
+//   let currentIndex = 0;
+
+//   function updateCarousel() {
+//     const offset = -currentIndex * 100;
+//     inner.style.transform = `translateX(${offset}%)`;
+//   }
+
+//   prevButton.addEventListener("click", () => {
+//     if (currentIndex > 0) {
+//       currentIndex--;
+//     } else {
+//       currentIndex = items.length - 1;
+//     }
+//     updateCarousel();
+//   });
+
+//   nextButton.addEventListener("click", () => {
+//     if (currentIndex < items.length - 1) {
+//       currentIndex++;
+//     } else {
+//       currentIndex = 0;
+//     }
+//     updateCarousel();
+//   });
+// });
+
 document.addEventListener("DOMContentLoaded", function () {
   const carousel = document.getElementById("carousel");
   const inner = carousel.querySelector(".carousel-inner");
-  const items = carousel.querySelectorAll(".carousel-item");
+  const items = carousel.querySelectorAll(".carousel-inner > div");
   const prevButton = carousel.querySelector("#prevButton");
   const nextButton = carousel.querySelector("#nextButton");
+  const progressBars = [
+    document.getElementById("progress1"),
+    document.getElementById("progress2"),
+    document.getElementById("progress3"),
+  ];
 
   let currentIndex = 0;
+  let intervalId;
+  let progressIntervalId;
+  const slideDuration = 4000; // 4 seconds
+  let isAnimating = false;
 
-  function updateCarousel() {
-    const offset = -currentIndex * 100;
-    inner.style.transform = `translateX(${offset}%)`;
+  // Hover uchun yangi o'zgaruvchilar
+  let isPaused = false;
+  let remainingTime = slideDuration;
+  let hoverStartTime;
+
+  function resetProgressBars() {
+    progressBars.forEach((bar) => {
+      bar.style.transition = "none";
+      bar.style.width = "0%";
+      void bar.offsetWidth; // Force reflow
+      bar.style.transition = "width 4s linear";
+    });
   }
 
-  prevButton.addEventListener("click", () => {
-    if (currentIndex > 0) {
-      currentIndex--;
+  function updateCarousel(direction = "next") {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    clearInterval(intervalId);
+    clearInterval(progressIntervalId);
+
+    if (direction === "next") {
+      currentIndex = (currentIndex + 1) % items.length;
     } else {
-      currentIndex = items.length - 1;
+      currentIndex = (currentIndex - 1 + items.length) % items.length;
     }
-    updateCarousel();
+
+    const offset = -currentIndex * 100;
+    inner.style.transform = `translateX(${offset}%)`;
+
+    resetProgressBars();
+    progressBars[currentIndex].style.width = "100%";
+
+    intervalId = setTimeout(() => {
+      updateCarousel("next");
+    }, slideDuration);
+
+    setTimeout(() => {
+      isAnimating = false;
+    }, 500);
+  }
+
+  function nextSlide() {
+    updateCarousel("next");
+  }
+
+  function prevSlide() {
+    updateCarousel("prev");
+  }
+
+  // Hover eventlari
+  carousel.addEventListener("mouseenter", () => {
+    if (isAnimating) return;
+
+    isPaused = true;
+    hoverStartTime = Date.now();
+
+    const activeProgressBar = progressBars[currentIndex];
+    const computedStyle = window.getComputedStyle(activeProgressBar);
+    const parentWidth = activeProgressBar.parentElement.offsetWidth;
+    const currentWidth = (parseFloat(computedStyle.width) / parentWidth) * 100;
+
+    remainingTime = slideDuration * (1 - currentWidth / 100);
+
+    clearTimeout(intervalId);
+    activeProgressBar.style.transition = "none";
+    activeProgressBar.style.width = `${currentWidth}%`;
+  });
+
+  carousel.addEventListener("mouseleave", () => {
+    if (isAnimating || !isPaused) return;
+
+    isPaused = false;
+    const activeProgressBar = progressBars[currentIndex];
+
+    activeProgressBar.style.transition = `width ${remainingTime}ms linear`;
+    activeProgressBar.style.width = "100%";
+
+    intervalId = setTimeout(() => {
+      updateCarousel("next");
+    }, remainingTime);
+  });
+
+  // Button eventlari
+  prevButton.addEventListener("click", () => {
+    prevSlide();
   });
 
   nextButton.addEventListener("click", () => {
-    if (currentIndex < items.length - 1) {
-      currentIndex++;
-    } else {
-      currentIndex = 0;
-    }
-    updateCarousel();
+    nextSlide();
   });
+
+  // Touch events
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  carousel.addEventListener(
+    "touchstart",
+    (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    },
+    { passive: true }
+  );
+
+  carousel.addEventListener(
+    "touchend",
+    (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    },
+    { passive: true }
+  );
+
+  function handleSwipe() {
+    if (touchEndX < touchStartX - 50) {
+      nextSlide();
+    } else if (touchEndX > touchStartX + 50) {
+      prevSlide();
+    }
+  }
+
+  // Boshlang'ich holat
+  resetProgressBars();
+  progressBars[currentIndex].style.width = "100%";
+  intervalId = setTimeout(() => {
+    updateCarousel("next");
+  }, slideDuration);
 });
+function nextSlide() {
+  if (!isPaused) {
+    updateCarousel("next");
+  }
+}
 
 const catalogButton = document.getElementById("catalogButton");
 const catalogModal = document.getElementById("catalogModal");

@@ -236,77 +236,138 @@
       id="#main"
       class="max-w-[1294px] mx-auto px-4 pt-2 animate-fadeIn max-md:w-full"
     >
-      <section class="pt-14 max-md:pt-0 max-md:mt-10">
-        <div
-          id="carousel"
-          class="relative w-full overflow-hidden max-md:hidden"
-        >
+      <div
+        id="carousel"
+        class="relative w-full h-[550px] max-md:h-[150px] mt-[56px] max-md:rounded-[8px] rounded-[32px] overflow-hidden"
+      >
+        <div class="carousel-inner w-[300%] h-full">
+          <!-- Slide 1 -->
           <div
-            class="carousel-inner flex transition-transform duration-500 ease-in-out"
+            class="w-full h-full flex items-center justify-start relative flex-shrink-0"
           >
-            <div class="carousel-item w-full flex-shrink-0">
-              <div class="flex pl-[158px]">
-                <div class="pr-[168px] pt-8">
-                  <h1 class="text-[58px] w-[140px] leading-[69px] pb-6">
-                    Добивайся большего
-                  </h1>
-                  <h2 class="text-[30px] pb-5">В рассрочку 0\0\24</h2>
-                  <ul class="list-disc pl-8">
-                    <li class="text-[20px] pb-[6px]">Безрамочный дисплей</li>
-                    <li class="text-[20px] pb-[6px]">Камеры 23 МП и 8 МП</li>
-                    <li class="text-[20px] pb-9">32 ГБ встроенной памяти</li>
-                  </ul>
-                  <a href="./pages/main-catalog.html">
-                    <button
-                      class="w-[132px] h-[50px] border-[1px] border-black rounded-3xl text-lg cursor-pointer"
-                    >
-                      Купить
-                    </button>
-                  </a>
-                </div>
-                <div class="relative">
-                  <img
-                    class="absolute pl-40 pt-[72px]"
-                    src="./img/productimage.png"
-                    alt="Product Image"
-                  />
-                  <img src="./img/Ellipse 1.png" alt="Ellipse" />
-                </div>
-              </div>
+            <img
+              src="./img/slider/bg1.png"
+              alt="Slide 1"
+              class="absolute w-[34%] h-full object-cover rounded-[32px] max-md:rounded-[8px]"
+            />
+            <div class="relative z-10 p-8 max-w-[650px] md:pl-24">
+              <h1
+                class="text-4xl md:text-5xl font-bold md:mb-10 text-white max-md:text-base"
+              >
+                Ваш IT-фундамент
+              </h1>
+              <ul
+                class="list-disc ml-6 md:mb-12 text-lg md:text-xl text-white max-md:text-sm"
+              >
+                <li>Мощь серверов</li>
+                <li>Скорость сетей</li>
+                <li>Надежность рабочих мест</li>
+              </ul>
+              <button
+                class="bg-white text-black font-semibold py-2 px-6 rounded-full border border-[black] max-md:hidden cursor-pointer"
+              >
+                Заказать звонок
+              </button>
             </div>
           </div>
 
-          <button
-            id="prevButton"
-            class="absolute top-1/2 left-4 transform -translate-y-1/2 text-black p-2 text-2xl"
+          <!-- Slide 2 -->
+          <div
+            class="w-full h-full flex items-center justify-start relative flex-shrink-0"
           >
-            <img src="./img/icons/backcarousel.svg" alt="" />
-          </button>
-          <button
-            id="nextButton"
-            class="absolute top-1/2 right-4 transform -translate-y-1/2 text-black p-2 text-2xl"
-          >
-            <img src="./img/icons/nextcarousel.svg" alt="" />
-          </button>
-        </div>
-        <div
-          style="
-            background: linear-gradient(
-              85.64deg,
-              #a155d3 6.2%,
-              #277fe9 101.54%
-            );
-          "
-          class="md:hidden mx-8 flex justify-end p-5 rounded-[8px] relative"
-        >
-          <h1 class="absolute top-5 left-5 text-white text-sm w-[110px]">
-            Суперцены на всю технику
-          </h1>
-          <img src="./img/mobileHero.svg" alt="" />
-        </div>
-      </section>
+            <img
+              src="./img/slider/bg2.png"
+              alt="Slide 2"
+              class="absolute w-[34%] h-full object-cover rounded-[32px] max-md:rounded-[8px]"
+            />
+            <div class="relative z-10 p-8 md:w-[650px] md:pl-24">
+              <h1
+                class="text-4xl md:text-5xl font-bold mb-10 text-white max-md:text-[16px] max-md:leading-[23px]"
+              >
+                Комплексный поставщик <br class="md:hidden" />
+                надежных IT решений <br class="md:hidden" />
+                для Вашего бизнеса
+              </h1>
 
-      <section class="pt-[122px] max-md:pt-0">
+              <button
+                class="bg-white text-black font-semibold py-2 px-6 rounded-full border border-[black] max-md:hidden cursor-pointer"
+              >
+                Заказать звонок
+              </button>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div
+            class="w-full h-full flex items-center justify-start relative flex-shrink-0"
+          >
+            <img
+              src="./img/slider/bg3.png"
+              alt="Slide 3"
+              class="absolute w-[34%] h-full object-cover rounded-[32px] max-md:rounded-[8px]"
+            />
+            <div class="relative z-10 p-8 max-w-[650px] md:pl-24">
+              <h1
+                class="text-4xl md:text-5xl font-bold md:mb-10 text-white max-md:text-base mt-3"
+              >
+                Ваша комплексная <br class="md:hidden" />
+                ИТ-инфраструктура
+              </h1>
+              <p class="mb-12 text-lg md:text-xl text-white max-md:text-base">
+                От рабочего места до сервера.
+                <span class="max-md:hidden">
+                  Оптимизируйте ИТ-бюджет с надежным оборудованием.</span
+                >
+              </p>
+              <button
+                class="bg-white text-black font-semibold py-2 px-6 rounded-full border border-[black] max-md:hidden cursor-pointer"
+              >
+                Заказать звонок
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prev/Next Buttons -->
+        <button
+          id="prevButton"
+          class="hidden md:block absolute top-1/2 left-5 transform -translate-y-1/2 text-white text-2xl z-10 cursor-pointer"
+        >
+          &#10094;
+        </button>
+        <button
+          id="nextButton"
+          class="hidden md:block absolute top-1/2 right-5 transform -translate-y-1/2 text-white text-2xl z-10 cursor-pointer"
+        >
+          &#10095;
+        </button>
+
+        <!-- Progress Bars -->
+        <div
+          class="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex gap-4 z-20"
+        >
+          <div class="w-24 h-1 bg-white/30 rounded overflow-hidden">
+            <div
+              id="progress1"
+              class="h-full bg-white w-0 progress-bar transition-all duration-300 linear"
+            ></div>
+          </div>
+          <div class="w-24 h-1 bg-white/30 rounded overflow-hidden">
+            <div
+              id="progress2"
+              class="h-full bg-white w-0 progress-bar transition-all duration-300 linear"
+            ></div>
+          </div>
+          <div class="w-24 h-1 bg-white/30 rounded overflow-hidden">
+            <div
+              id="progress3"
+              class="h-full bg-white w-0 progress-bar transition-all duration-300 linear"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <section class="pt-[0px] max-md:pt-0">
         <h2
           class="md:text-center text-[42px] pt-24 max-md:pt-[60px] pb-16 leading-3 max-md:text-[20px] max-md:pb-0"
         >
