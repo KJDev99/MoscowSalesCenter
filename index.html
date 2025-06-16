@@ -1,963 +1,596 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Moskow Sales Center</title>
 
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <link href="./index.css" rel="stylesheet" />
-  </head>
-  <body>
-    <header
-      class="flex items-center max-w-[1294px] mx-auto px-4 pt-2 animate-fadeIn max-md:flex-col max-md:border-b max-md:border-[#C1C1C1] max-md:pb-7 max-md:rounded-b-lg"
-    >
-      <a href="./index.html" class="md:pr-14 logo">
-        <img class="h-auto w-auto" src="./img/icons/logo.svg" alt="Logo" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moskow Sales Center</title>
+
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <link href="./index.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header
+    class="flex items-center max-w-[1294px] mx-auto px-4 pt-2 animate-fadeIn max-md:flex-col max-md:border-b max-md:border-[#C1C1C1] max-md:pb-7 max-md:rounded-b-lg">
+    <a href="./index.html" class="md:pr-14 logo">
+      <img class="h-auto w-auto" src="./img/icons/logo.svg" alt="Logo" />
+    </a>
+    <nav
+      class="flex gap-[22px] pr-[115px] max-md:flex-col max-md:top-[-400px] max-md:transition-all max-md:fixed left-1/2 top-1/2 max-md:transform max-md:-translate-x-1/2 max-md:-translate-y-1/2 max-md:w-[80%] max-md:bg-white flex max-md:justify-center max-md:items-center text-black max-md:p-10 max-md:gap-5 max-md:shadow-lg max-md:rounded-lg z-[999]">
+      <button class="absolute top-2 right-4 text-2xl cursor-pointer md:hidden closeMenu">
+        &times;
+      </button>
+      <a class="text-sm text-sm md:pr-5" href="./index.html">ГЛАВНАЯ</a>
+      <div class="relative max-md:hidden">
+        <div class="flex items-center pt-[0.3px] cursor-pointer" id="catalogButton">
+          <a class="text-sm" href="#">КАТАЛОГ</a>
+          <img class="w-auto h-auto pl-[6px] pt-[4px] transition-transform duration-300" id="arrowIcon"
+            src="./img/icons/arrowbottom.svg" alt="Каталог" />
+        </div>
+
+        <div id="catalogModal"
+          class="absolute left-0 mt-2 w-max bg-white shadow-lg rounded-lg overflow-hidden scale-95 transition-all duration-300 hidden">
+          <ul class="py-2">
+            <li class="px-2 py-2 font-bold text-xl">Ноутбуки</li>
+            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[rgba(0,0,0,0.5)]">
+              <a href="./pages/main-catalog.html"> Ноутбуки Rikor  </a>
+            </li>
+            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[rgba(0,0,0,0.5)]">
+              <a href="./pages/main-catalog.html">
+                Ноутбуки Гравитон Ноутбуки Irbis 
+              </a>
+            </li>
+            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[rgba(0,0,0,0.5)]">
+              <a href="./pages/main-catalog.html">
+                Ноутбуки iRU Ноутбуки F-Plus 
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <a class="text-sm text-sm" href="./pages/news.html">НОВОСТИ</a>
+      <a class="text-sm text-sm" href="./pages/manufacturers.html">ПРОИЗВОДИТЕЛИ</a>
+      <a class="text-sm text-sm" href="./pages/contact.html">КОНТАКТЫ</a>
+    </nav>
+
+    <div class="flex justify-between w-full mt-5 md:hidden">
+      <div class="flex gap-3 justify-start items-center">
+        <img src="./img/icons/menu.svg" class="menuOpen cursor-pointer" />
+        <a href="tel:+84951504072">
+          <img src="./img/icons/phone.svg" alt="" />
+        </a>
+      </div>
+      <div class="flex items-center relative px-4 w-[244px] input_linear">
+        <img src="./img/icons/search.svg" alt="" class="w-4 h-4" />
+        <input type="text" class="max-md:w-full pl-2 h-12 rounded-full text-[#454545]" placeholder="Поиск" />
+      </div>
+    </div>
+
+    <div class="flex items-center max-md:hidden">
+      <button id="animatedButton"
+        class="w-[154px] h-[48px] pb-[2px] bg-gradient-to-r to-blue-500 from-purple-500 text-white rounded-full cursor-pointer call-btn">
+        <a class="" href="#"> Заказать звонок </a>
+      </button>
+      <div class="flex gap-5 ml-10">
+        <a href="./pages/search.html">
+          <img src="./img/icons/search.svg" alt="Search" class="pl-2" />
+          <p class="text-[13px] leading-none pt-[9px]">Поиск</p>
+        </a>
+        <a href="./pages/compare.html">
+          <img src="./img/icons/compaireng.svg" alt="Compare" class="pl-[18px]" />
+          <p class="text-[13px] leading-none pt-[10px]">Сравнить</p>
+        </a>
+        <a href="./pages/saved.html">
+          <img src="./img/icons/menulike.svg" alt="Favorite" class="pl-6 relative" />
+          <p class="text-[13px] leading-none pt-[7px] absolute">Избранное</p>
+        </a>
+      </div>
+    </div>
+    <div id="popupCallback"
+      class="fixed inset-0 bg-[#00000090] bg-opacity-70 flex items-center justify-center p-6 z-50 hidden">
+      <div class="relative bg-white max-w-md w-full rounded-lg shadow-lg p-8 mx-4">
+        <!-- Close button -->
+        <button id="closePopup" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 focus:outline-none"
+          aria-label="Close popup">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <h2 class="text-2xl font-semibold text-center mb-6">
+          Оставьте контакт и мы вам перезвоним!
+        </h2>
+
+        <form action="/" method="post" class="space-y-6">
+          <input type="text" name="name" placeholder="Ваше имя" required
+            class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
+          <input type="tel" name="phone" placeholder="Телефон" required
+            class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
+          <button type="submit"
+            class="w-full py-3 rounded-md transition-colors duration-300 bg-gradient-to-r to-blue-500 from-purple-500 text-white">
+            Отправить!
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div
+      class="flex items-center max-md:fixed max-md:bottom-0 max-md:left-0 md:hidden w-full bg-[#f6f6f6] border border-t-[#C1C1C1] px-5 py-4 z-[100] justify-between">
+      <a href="./index.html" class="flex flex-col items-center justify-center">
+        <img src="./img/icons/mobilemenuicons/homeact.svg" alt="Compare" class="pl-[0px]" />
+        <p class="text_linear text-[13px] leading-none pt-[10px] text-transparent bg-clip-text">
+          Главная
+        </p>
       </a>
-      <nav
-        class="flex gap-[22px] pr-[115px] max-md:flex-col max-md:top-[-400px] max-md:transition-all max-md:fixed left-1/2 top-1/2 max-md:transform max-md:-translate-x-1/2 max-md:-translate-y-1/2 max-md:w-[80%] max-md:bg-white flex max-md:justify-center max-md:items-center text-black max-md:p-10 max-md:gap-5 max-md:shadow-lg max-md:rounded-lg z-[999]"
-      >
-        <button
-          class="absolute top-2 right-4 text-2xl cursor-pointer md:hidden closeMenu"
-        >
-          &times;
-        </button>
-        <a class="text-sm text-sm md:pr-5" href="./index.html">ГЛАВНАЯ</a>
-        <div class="relative max-md:hidden">
-          <div
-            class="flex items-center pt-[0.3px] cursor-pointer"
-            id="catalogButton"
-          >
-            <a class="text-sm" href="#">КАТАЛОГ</a>
-            <img
-              class="w-auto h-auto pl-[6px] pt-[4px] transition-transform duration-300"
-              id="arrowIcon"
-              src="./img/icons/arrowbottom.svg"
-              alt="Каталог"
-            />
-          </div>
+      <a href="./pages/catalogMobile.html" class="flex flex-col items-center justify-center">
+        <img src="./img/icons/mobilemenuicons/catalog.svg" alt="Compare" class="pl-[0px]" />
+        <p class="text-[13px] leading-none pt-[10px]">Каталог</p>
+      </a>
+      <a href="./pages/saved.html" class="flex flex-col items-center justify-center">
+        <img src="./img/icons/mobilemenuicons/mobilelike.svg" alt="Compare" class="pl-[0px]" />
+        <p class="text-[13px] leading-none pt-[10px]">Избранное</p>
+      </a>
+      <a href="tel:+84951504072" class="flex flex-col items-center justify-center">
+        <img src="./img/icons/mobilemenuicons/mobilephone.svg" alt="Compare" class="pl-[0px]" />
+        <p class="text-[13px] leading-none pt-[10px]">Позвонить</p>
+      </a>
+    </div>
+  </header>
 
-          <div
-            id="catalogModal"
-            class="absolute left-0 mt-2 w-max bg-white shadow-lg rounded-lg overflow-hidden scale-95 transition-all duration-300 hidden"
-          >
-            <ul class="py-2">
-              <li class="px-2 py-2 font-bold text-xl">Ноутбуки</li>
-              <li
-                class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[rgba(0,0,0,0.5)]"
-              >
-                <a href="./pages/main-catalog.html"> Ноутбуки Rikor  </a>
-              </li>
-              <li
-                class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[rgba(0,0,0,0.5)]"
-              >
-                <a href="./pages/main-catalog.html">
-                  Ноутбуки Гравитон Ноутбуки Irbis 
-                </a>
-              </li>
-              <li
-                class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[rgba(0,0,0,0.5)]"
-              >
-                <a href="./pages/main-catalog.html">
-                  Ноутбуки iRU Ноутбуки F-Plus 
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <a class="text-sm text-sm" href="./pages/news.html">НОВОСТИ</a>
-        <a class="text-sm text-sm" href="./pages/manufacturers.html"
-          >ПРОИЗВОДИТЕЛИ</a
-        >
-        <a class="text-sm text-sm" href="./pages/contact.html">КОНТАКТЫ</a>
-      </nav>
-
-      <div class="flex justify-between w-full mt-5 md:hidden">
-        <div class="flex gap-3 justify-start items-center">
-          <img src="./img/icons/menu.svg" class="menuOpen cursor-pointer" />
-          <a href="tel:+84951504072">
-            <img src="./img/icons/phone.svg" alt="" />
-          </a>
-        </div>
-        <div class="flex items-center relative px-4 w-[244px] input_linear">
-          <img src="./img/icons/search.svg" alt="" class="w-4 h-4" />
-          <input
-            type="text"
-            class="max-md:w-full pl-2 h-12 rounded-full text-[#454545]"
-            placeholder="Поиск"
-          />
-        </div>
+  <main id="#main" class="max-w-[1294px] mx-auto px-4 pt-2 animate-fadeIn max-md:w-full">
+    <div id="carousel"
+      class="relative w-full h-[550px] max-md:h-[150px] mt-[56px] max-md:rounded-[8px] rounded-[32px] overflow-hidden">
+      <div class="carousel-inner w-[300%] h-full">
+        <!-- Slides will be inserted here dynamically -->
       </div>
 
-      <div class="flex items-center max-md:hidden">
-        <button
-          id="animatedButton"
-          class="w-[154px] h-[48px] pb-[2px] bg-gradient-to-r to-blue-500 from-purple-500 text-white rounded-full cursor-pointer call-btn"
-        >
-          <a class="" href="#"> Заказать звонок </a>
-        </button>
-        <div class="flex gap-5 ml-10">
-          <a href="./pages/search.html">
-            <img src="./img/icons/search.svg" alt="Search" class="pl-2" />
-            <p class="text-[13px] leading-none pt-[9px]">Поиск</p>
-          </a>
-          <a href="./pages/compare.html">
-            <img
-              src="./img/icons/compaireng.svg"
-              alt="Compare"
-              class="pl-[18px]"
-            />
-            <p class="text-[13px] leading-none pt-[10px]">Сравнить</p>
-          </a>
-          <a href="./pages/saved.html">
-            <img
-              src="./img/icons/menulike.svg"
-              alt="Favorite"
-              class="pl-6 relative"
-            />
-            <p class="text-[13px] leading-none pt-[7px] absolute">Избранное</p>
-          </a>
+      <!-- Prev/Next Buttons -->
+      <button id="prevButton"
+        class="hidden md:block absolute top-1/2 left-5 transform -translate-y-1/2 text-white text-2xl z-10 cursor-pointer">
+        &#10094;
+      </button>
+      <button id="nextButton"
+        class="hidden md:block absolute top-1/2 right-5 transform -translate-y-1/2 text-white text-2xl z-10 cursor-pointer">
+        &#10095;
+      </button>
+
+      <!-- Progress Bars Container -->
+      <div id="progressBarsContainer" class="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex gap-4 z-20">
+        <!-- Progress bars will be inserted here dynamically -->
+      </div>
+    </div>
+
+    <section class="pt-[0px] max-md:pt-0">
+      <h2 class="md:text-center text-[42px] pt-24 max-md:pt-[60px] pb-16 leading-3 max-md:text-[20px] max-md:pb-0">
+        Каталог
+      </h2>
+      <div class="flex gap-6 max-md:hidden">
+        <div>
+          <div class="pb-[72px] relative product-item">
+            <img src="./img/laptop.png" alt="laptop" class="absolute top-[-95px] left-[-19px]" />
+            <div
+              class="w-[630px] h-[472px] rounded-3xl shadow-custom-soft shadow-black p-4 overflow-hidden product-card">
+              <div class="text-right pr-[21px] pt-[362px]">
+                <p class="text-[15px] leading-3">Ноутбуки</p>
+                <p class="text-[32px] leading-tight" style="font-family: MyFont, sans-serif">
+                  Создан для вас
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative product-item">
+            <img src="./img/monitor.png" alt="monitor" class="absolute top-[-2px] left-[-37px]" />
+            <div class="w-[630px] h-[270px] rounded-3xl shadow-custom-soft shadow-black p-4 product-card">
+              <div class="text-right pr-[21px] pt-[74px]">
+                <p class="text-[15px] leading-3">Мониторы</p>
+                <p class="text-[32px] leading-tight" style="font-family: MyFont, sans-serif">
+                  Идеальное<br />
+                  изображение
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex gap-5">
+          <div class="relative product-item">
+            <img src="./img/computer.png" alt="monitor" class="absolute top-[142px] left-6" />
+            <div class="w-[304px] h-[792px] rounded-3xl shadow-custom-soft shadow-zinc-800 p-4 product-card">
+              <div class="bottom-4 right-4 text-center pt-[539px]">
+                <p class="text-[15px] pb-2 leading-3">Компьютеры</p>
+                <p class="text-[32px] leading-tight" style="font-family: MyFont, sans-serif">
+                  Решает любые задачи
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative product-item">
+            <img src="./img/ipad.png" alt="monitor" class="absolute top-[292px]" />
+            <div class="w-[305px] h-[792px] rounded-3xl shadow-custom-soft shadow-zinc-800 p-4 product-card">
+              <div class="pr-8 pt-[100px]">
+                <div class="text-center">
+                  <p class="text-[15px] leading-3">Планшеты</p>
+                  <p class="text-[32px] leading-tight" style="font-family: MyFont, sans-serif">
+                    Всегда под рукой
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div
-        id="popupCallback"
-        class="fixed inset-0 bg-[#00000090] bg-opacity-70 flex items-center justify-center p-6 z-50 hidden"
-      >
-        <div
-          class="relative bg-white max-w-md w-full rounded-lg shadow-lg p-8 mx-4"
-        >
-          <!-- Close button -->
-          <button
-            id="closePopup"
-            class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 focus:outline-none"
-            aria-label="Close popup"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
+      <div class="max-w-md mx-auto rounded-lg md:hidden">
+        <div class="scroll-container flex overflow-x-auto gap-5 max-md:pt-7">
+          <div class="flex-shrink-0 w-[100px]">
+            <div class="katalog_shadow rounded-lg">
+              <p class="text-[8px] text-center pt-3 mb-2">Всегда под рукой</p>
+              <img src="./img/ipad.png" alt="Product 1" class="w-full h-24 object-cover mb-2" />
+            </div>
+            <h3 class="text mt-[10px]">Планшеты</h3>
+          </div>
+          <div class="flex-shrink-0 w-[100px]">
+            <div class="katalog_shadow rounded-lg">
+              <p class="text-[8px] text-center pt-3 mb-2">Всегда под рукой</p>
+              <img src="./img/ipad.png" alt="Product 1" class="w-full h-24 object-cover mb-2" />
+            </div>
+            <h3 class="text mt-[10px]">Планшеты</h3>
+          </div>
+          <div class="flex-shrink-0 w-[100px]">
+            <div class="katalog_shadow rounded-lg">
+              <p class="text-[8px] text-center pt-3 mb-2">Всегда под рукой</p>
+              <img src="./img/ipad.png" alt="Product 1" class="w-full h-24 object-cover mb-2" />
+            </div>
+            <h3 class="text mt-[10px]">Планшеты</h3>
+          </div>
+          <div class="flex-shrink-0 w-[100px]">
+            <div class="katalog_shadow rounded-lg">
+              <p class="text-[8px] text-center pt-3 mb-2">Всегда под рукой</p>
+              <img src="./img/ipad.png" alt="Product 1" class="w-full h-24 object-cover mb-2" />
+            </div>
+            <h3 class="text mt-[10px]">Планшеты</h3>
+          </div>
+          <div class="flex-shrink-0 w-[100px]">
+            <div class="katalog_shadow rounded-lg">
+              <p class="text-[8px] text-center pt-3 mb-2">Всегда под рукой</p>
+              <img src="./img/ipad.png" alt="Product 1" class="w-full h-24 object-cover mb-2" />
+            </div>
+            <h3 class="text mt-[10px]">Планшеты</h3>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <h2 class="text-2xl font-semibold text-center mb-6">
-            Оставьте контакт и мы вам перезвоним!
-          </h2>
-
-          <form action="/" method="post" class="space-y-6">
-            <input
-              type="text"
-              name="name"
-              placeholder="Ваше имя"
-              required
-              class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-            />
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Телефон"
-              required
-              class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-            />
+    <section id="top" class="pt-[70px] max-md:pt-0">
+      <h2 class="md:text-center text-[42px] pt-24 max-md:pt-[60px] pb-16 leading-3 max-md:text-[20px] max-md:pb-7">
+        Лучшие предложения
+      </h2>
+      <div class="flex justify-between max-md:hidden">
+        <div>
+          <img class="pb-8 pl-7" src="./img/laptop2.png" alt="Laptop" />
+          <div>
+            <p class="text-[22px] pb-1" style="font-family: MyFont, sans-serif">
+              Название
+            </p>
+            <p class="text-sm text-[#4B4B4B] pb-9" style="font-family: MyFont, sans-serif">
+              Описание
+            </p>
+            <p class="text-lg pb-6" style="font-family: MyFont, sans-serif">
+              1,200.00
+            </p>
             <button
-              type="submit"
-              class="w-full py-3 rounded-md transition-colors duration-300 bg-gradient-to-r to-blue-500 from-purple-500 text-white"
-            >
-              Отправить!
+              class="w-[135px] h-[50px] pb-[2px] bg-gradient-to-r to-blue-500 from-purple-500 rounded-3xl text-white text-lg custom-animation">
+              Купить
             </button>
-          </form>
+          </div>
+        </div>
+
+        <div>
+          <img class="pb-8 pl-7" src="./img/computer2.png" alt="Computer" />
+          <div>
+            <p class="text-[22px] pb-1" style="font-family: MyFont, sans-serif">
+              Название
+            </p>
+            <p class="text-sm text-[#4B4B4B] pb-9" style="font-family: MyFont, sans-serif">
+              Описание
+            </p>
+            <p class="text-lg pb-6" style="font-family: MyFont, sans-serif">
+              199.00
+            </p>
+            <button
+              class="w-[135px] h-[50px] pb-[2px] bg-gradient-to-r to-blue-500 from-purple-500 rounded-3xl text-white text-lg custom-animation">
+              Купить
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <img class="pb-8 pl-7" src="./img/monitor2.png" alt="Monitor" />
+          <div>
+            <p class="text-[22px] pb-1" style="font-family: MyFont, sans-serif">
+              Название
+            </p>
+            <p class="text-sm text-[#4B4B4B] pb-9" style="font-family: MyFont, sans-serif">
+              Описание
+            </p>
+            <p class="text-lg pb-6" style="font-family: MyFont, sans-serif">
+              1,009.00
+            </p>
+            <button
+              class="w-[135px] h-[50px] pb-[2px] bg-gradient-to-r to-blue-500 from-purple-500 rounded-3xl text-white text-lg custom-animation">
+              Купить
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <img class="pb-8 pl-7" src="./img/ipad2.png" alt="iPad" />
+          <div>
+            <p class="text-[22px] pb-1" style="font-family: MyFont, sans-serif">
+              Название
+            </p>
+            <p class="text-sm text-[#4B4B4B] pb-9" style="font-family: MyFont, sans-serif">
+              Описание
+            </p>
+            <p class="text-lg pb-6" style="font-family: MyFont, sans-serif">
+              610.00
+            </p>
+            <button
+              class="w-[135px] h-[50px] pb-[2px] bg-gradient-to-r to-blue-500 from-purple-500 rounded-3xl text-white text-lg custom-animation">
+              Купить
+            </button>
+          </div>
         </div>
       </div>
+      <div class="md:hidden grid grid-cols-2 gap-8">
+        <div class="max-w-md mx-auto bg-white rounded-lg overflow-hidden">
+          <div class="relative overflow-hidden">
+            <div id="slider1" class="slider">
+              <img src="./img/iphone11.png" alt="Product Image 1" class="h-[158px] object-contain px-3" />
+              <img src="./img/iphone11.png" alt="Product Image 2" class="h-[158px] object-contain px-3" />
+              <img src="./img/iphone11.png" alt="Product Image 3" class="h-[158px] object-contain px-3" />
+            </div>
+          </div>
 
-      <div
-        class="flex items-center max-md:fixed max-md:bottom-0 max-md:left-0 md:hidden w-full bg-[#f6f6f6] border border-t-[#C1C1C1] px-5 py-4 z-[100] justify-between"
-      >
-        <a
-          href="./index.html"
-          class="flex flex-col items-center justify-center"
-        >
-          <img
-            src="./img/icons/mobilemenuicons/homeact.svg"
-            alt="Compare"
-            class="pl-[0px]"
-          />
-          <p
-            class="text_linear text-[13px] leading-none pt-[10px] text-transparent bg-clip-text"
-          >
-            Главная
+          <div id="indicators1" class="flex justify-center py-4"></div>
+
+          <div class="p-4">
+            <h2 class="text font-bold">Смартфон Apple iPhone 12 64GB</h2>
+            <div class="flex justify-between my-4 items-center">
+              <p class="text-[#357BE7]">В наличии</p>
+              <img src="./img/icons/like.svg" alt="" />
+            </div>
+            <div class="flex max-md:flex max-md:items-center max-md:justify-center">
+              <a class="w-full" href="./pages/detail.html">
+                <button
+                  class="w-[100%] h-[44px] pb-[2px] text-lg bg-gradient-to-r to-blue-500 from-purple-500 rounded-full text-white custom-animation max-md:mx-auto">
+                  В корзину
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="max-w-md mx-auto bg-white rounded-lg overflow-hidden">
+          <div class="relative overflow-hidden">
+            <div id="slider2" class="slider">
+              <img src="./img/iphone11.png" alt="Product Image 1" class="h-[158px] object-contain px-3" />
+              <img src="./img/iphone11.png" alt="Product Image 2" class="h-[158px] object-contain px-3" />
+              <img src="./img/iphone11.png" alt="Product Image 3" class="h-[158px] object-contain px-3" />
+            </div>
+          </div>
+
+          <div id="indicators2" class="flex justify-center py-4"></div>
+
+          <div class="p-4">
+            <h2 class="text font-bold">Смартфон Apple iPhone 12 64GB</h2>
+            <div class="flex justify-between my-4 items-center">
+              <p class="text-[#357BE7]">В наличии</p>
+              <img src="./img/icons/like.svg" alt="" />
+            </div>
+            <div class="flex max-md:flex max-md:items-center max-md:justify-center">
+              <a class="w-full" href="./pages/detail.html">
+                <button
+                  class="w-[100%] h-[44px] pb-[2px] text-lg bg-gradient-to-r to-blue-500 from-purple-500 rounded-full text-white custom-animation max-md:mx-auto">
+                  В корзину
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="news">
+      <h2
+        class="md:text-center text-[42px] pt-24 leading-3 max-md:text-[20px] max-md:pb-7 max-md:mt-[60px] max-md:pt-[0px]">
+        Новости
+      </h2>
+      <div class="flex justify-between max-md:hidden">
+        <div>
+          <div class="relative w-max">
+            <img class="absolute pl-9 pt-[116px]" src="./img/news.png" alt="News" />
+            <img src="./img/Ellipse 2.png" alt="Ellipse" />
+          </div>
+        </div>
+        <div class="max-w-[580px] pt-32">
+          <p class="text-2xl pb-5" style="font-family: MyFontPro">
+            Apple поставит OLED-дисплеи китайским производителям смартфонов
           </p>
-        </a>
-        <a
-          href="./pages/catalogMobile.html"
-          class="flex flex-col items-center justify-center"
-        >
-          <img
-            src="./img/icons/mobilemenuicons/catalog.svg"
-            alt="Compare"
-            class="pl-[0px]"
-          />
-          <p class="text-[13px] leading-none pt-[10px]">Каталог</p>
-        </a>
-        <a
-          href="./pages/saved.html"
-          class="flex flex-col items-center justify-center"
-        >
-          <img
-            src="./img/icons/mobilemenuicons/mobilelike.svg"
-            alt="Compare"
-            class="pl-[0px]"
-          />
-          <p class="text-[13px] leading-none pt-[10px]">Избранное</p>
-        </a>
-        <a
-          href="tel:+84951504072"
-          class="flex flex-col items-center justify-center"
-        >
-          <img
-            src="./img/icons/mobilemenuicons/mobilephone.svg"
-            alt="Compare"
-            class="pl-[0px]"
-          />
-          <p class="text-[13px] leading-none pt-[10px]">Позвонить</p>
-        </a>
-      </div>
-    </header>
-
-    <main
-      id="#main"
-      class="max-w-[1294px] mx-auto px-4 pt-2 animate-fadeIn max-md:w-full"
-    >
-      <div
-        id="carousel"
-        class="relative w-full h-[550px] max-md:h-[150px] mt-[56px] max-md:rounded-[8px] rounded-[32px] overflow-hidden"
-      >
-        <div class="carousel-inner w-[300%] h-full">
-          <!-- Slide 1 -->
-          <div
-            class="w-full h-full flex items-center justify-start relative flex-shrink-0"
-          >
-            <img
-              src="./img/slider/bg1.png"
-              alt="Slide 1"
-              class="absolute w-[34%] h-full object-cover rounded-[32px] max-md:rounded-[8px]"
-            />
-            <div class="relative z-10 p-8 max-w-[650px] md:pl-24">
-              <h1
-                class="text-4xl md:text-5xl font-bold md:mb-10 text-white max-md:text-base"
-              >
-                Ваш IT-фундамент
-              </h1>
-              <ul
-                class="list-disc ml-6 md:mb-12 text-lg md:text-xl text-white max-md:text-sm"
-              >
-                <li>Мощь серверов</li>
-                <li>Скорость сетей</li>
-                <li>Надежность рабочих мест</li>
-              </ul>
-              <button
-                class="bg-white text-black font-semibold py-2 px-6 rounded-full border border-[black] max-md:hidden cursor-pointer"
-              >
-                Заказать звонок
-              </button>
-            </div>
-          </div>
-
-          <!-- Slide 2 -->
-          <div
-            class="w-full h-full flex items-center justify-start relative flex-shrink-0"
-          >
-            <img
-              src="./img/slider/bg2.png"
-              alt="Slide 2"
-              class="absolute w-[34%] h-full object-cover rounded-[32px] max-md:rounded-[8px]"
-            />
-            <div class="relative z-10 p-8 md:w-[650px] md:pl-24">
-              <h1
-                class="text-4xl md:text-5xl font-bold mb-10 text-white max-md:text-[16px] max-md:leading-[23px]"
-              >
-                Комплексный поставщик <br class="md:hidden" />
-                надежных IT решений <br class="md:hidden" />
-                для Вашего бизнеса
-              </h1>
-
-              <button
-                class="bg-white text-black font-semibold py-2 px-6 rounded-full border border-[black] max-md:hidden cursor-pointer"
-              >
-                Заказать звонок
-              </button>
-            </div>
-          </div>
-
-          <!-- Slide 3 -->
-          <div
-            class="w-full h-full flex items-center justify-start relative flex-shrink-0"
-          >
-            <img
-              src="./img/slider/bg3.png"
-              alt="Slide 3"
-              class="absolute w-[34%] h-full object-cover rounded-[32px] max-md:rounded-[8px]"
-            />
-            <div class="relative z-10 p-8 max-w-[650px] md:pl-24">
-              <h1
-                class="text-4xl md:text-5xl font-bold md:mb-10 text-white max-md:text-base mt-3"
-              >
-                Ваша комплексная <br class="md:hidden" />
-                ИТ-инфраструктура
-              </h1>
-              <p class="mb-12 text-lg md:text-xl text-white max-md:text-base">
-                От рабочего места до сервера.
-                <span class="max-md:hidden">
-                  Оптимизируйте ИТ-бюджет с надежным оборудованием.</span
-                >
-              </p>
-              <button
-                class="bg-white text-black font-semibold py-2 px-6 rounded-full border border-[black] max-md:hidden cursor-pointer"
-              >
-                Заказать звонок
-              </button>
-            </div>
-          </div>
+          <p class="text-2xl pb-5" style="font-family: MyFontPro">
+            В Санкт-Петербурге открылся складской комплекс площадью 5 тыс.
+            кв.м. и вместимостью до 100 000 товаров
+          </p>
+          <p class="text-2xl pb-3" style="font-family: MyFontPro">
+            В России возобновят выпуск фотоаппаратов «Зенит»
+          </p>
+          <p class="text-2xl" style="font-family: MyFontPro">
+            Вперед в спорт! Зимние Олимпийские игры уже близко
+          </p>
         </div>
-
-        <!-- Prev/Next Buttons -->
+      </div>
+      <div class="flex justify-center pt-4 max-md:hidden">
         <button
-          id="prevButton"
-          class="hidden md:block absolute top-1/2 left-5 transform -translate-y-1/2 text-white text-2xl z-10 cursor-pointer"
-        >
-          &#10094;
+          class="w-[226px] h-[57px] pb-[2px] text-2xl bg-gradient-to-r to-blue-500 from-purple-500 rounded-full text-white custom-animation">
+          Смотреть все
         </button>
-        <button
-          id="nextButton"
-          class="hidden md:block absolute top-1/2 right-5 transform -translate-y-1/2 text-white text-2xl z-10 cursor-pointer"
-        >
-          &#10095;
-        </button>
-
-        <!-- Progress Bars -->
-        <div
-          class="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex gap-4 z-20"
-        >
-          <div class="w-24 h-1 bg-white/30 rounded overflow-hidden">
-            <div
-              id="progress1"
-              class="h-full bg-white w-0 progress-bar transition-all duration-300 linear"
-            ></div>
+      </div>
+      <div class="md:hidden">
+        <div class="grid grid-cols-5 gap-4 px-3 py-7 shadow-custom-soft">
+          <div class="col-span-2">
+            <img src="./img/mobilenews.png" class="w-full" alt="" />
           </div>
-          <div class="w-24 h-1 bg-white/30 rounded overflow-hidden">
-            <div
-              id="progress2"
-              class="h-full bg-white w-0 progress-bar transition-all duration-300 linear"
-            ></div>
-          </div>
-          <div class="w-24 h-1 bg-white/30 rounded overflow-hidden">
-            <div
-              id="progress3"
-              class="h-full bg-white w-0 progress-bar transition-all duration-300 linear"
-            ></div>
+          <div class="col-span-3 flex flex-col">
+            <h3 class="text-[16px]">Название</h3>
+            <p class="text-[#9D9D9D] text-sm my-4 leading-6 grow-1">
+              Смартфон Apple iPhone 13 выполнен в ... (ОПИСАНИЕ)
+            </p>
+            <button class="btn_linear border py-4 px-7 w-max text-[10px] rounded-full relative">
+              <span class="text_linear text-transparent bg-clip-text">
+                Читать полностью
+              </span>
+            </button>
           </div>
         </div>
       </div>
+    </section>
 
-      <section class="pt-[0px] max-md:pt-0">
-        <h2
-          class="md:text-center text-[42px] pt-24 max-md:pt-[60px] pb-16 leading-3 max-md:text-[20px] max-md:pb-0"
-        >
-          Каталог
-        </h2>
-        <div class="flex gap-6 max-md:hidden">
-          <div>
-            <div class="pb-[72px] relative product-item">
-              <img
-                src="./img/laptop.png"
-                alt="laptop"
-                class="absolute top-[-95px] left-[-19px]"
-              />
-              <div
-                class="w-[630px] h-[472px] rounded-3xl shadow-custom-soft shadow-black p-4 overflow-hidden product-card"
-              >
-                <div class="text-right pr-[21px] pt-[362px]">
-                  <p class="text-[15px] leading-3">Ноутбуки</p>
-                  <p
-                    class="text-[32px] leading-tight"
-                    style="font-family: MyFont, sans-serif"
-                  >
-                    Создан для вас
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="relative product-item">
-              <img
-                src="./img/monitor.png"
-                alt="monitor"
-                class="absolute top-[-2px] left-[-37px]"
-              />
-              <div
-                class="w-[630px] h-[270px] rounded-3xl shadow-custom-soft shadow-black p-4 product-card"
-              >
-                <div class="text-right pr-[21px] pt-[74px]">
-                  <p class="text-[15px] leading-3">Мониторы</p>
-                  <p
-                    class="text-[32px] leading-tight"
-                    style="font-family: MyFont, sans-serif"
-                  >
-                    Идеальное<br />
-                    изображение
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="flex gap-5">
-            <div class="relative product-item">
-              <img
-                src="./img/computer.png"
-                alt="monitor"
-                class="absolute top-[142px] left-6"
-              />
-              <div
-                class="w-[304px] h-[792px] rounded-3xl shadow-custom-soft shadow-zinc-800 p-4 product-card"
-              >
-                <div class="bottom-4 right-4 text-center pt-[539px]">
-                  <p class="text-[15px] pb-2 leading-3">Компьютеры</p>
-                  <p
-                    class="text-[32px] leading-tight"
-                    style="font-family: MyFont, sans-serif"
-                  >
-                    Решает любые задачи
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="relative product-item">
-              <img
-                src="./img/ipad.png"
-                alt="monitor"
-                class="absolute top-[292px]"
-              />
-              <div
-                class="w-[305px] h-[792px] rounded-3xl shadow-custom-soft shadow-zinc-800 p-4 product-card"
-              >
-                <div class="pr-8 pt-[100px]">
-                  <div class="text-center">
-                    <p class="text-[15px] leading-3">Планшеты</p>
-                    <p
-                      class="text-[32px] leading-tight"
-                      style="font-family: MyFont, sans-serif"
-                    >
-                      Всегда под рукой
-                    </p>
+    <section id="contacts" class="pb-16 pt-16 max-md:pt-6 max-md:pb-[150px]">
+      <div class="flex gap-10 pb-5 max-md:pb-6">
+        <div class="flex flex-col max-md:w-full">
+          <h3 class="text-[42px] pb-7 max-md:text-[20px] max-md:pb-4">
+            Контакты
+          </h3>
+          <div class="flex justify-between w-full">
+            <div class="w-full">
+              <div class="flex gap-48 max-md:flex-col max-md:gap-7 max-md:pb-10">
+                <div>
+                  <div>
+                    <a href="+84951504072" class="text-sm pb-6 max-md:pb-7 block">
+                      <p style="font-family: MyFontPro">Телефон</p>
+                      <p style="font-family: MyFontPro">8 (495) 150-40-72</p>
+                    </a>
+                    <a href="mailto:info@mossales.ru" class="text-sm">
+                      <p style="font-family: MyFontPro">Email</p>
+                      <p style="font-family: MyFontPro">info@mossales.ru</p>
+                    </a>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="max-w-md mx-auto rounded-lg md:hidden">
-          <div class="scroll-container flex overflow-x-auto gap-5 max-md:pt-7">
-            <div class="flex-shrink-0 w-[100px]">
-              <div class="katalog_shadow rounded-lg">
-                <p class="text-[8px] text-center pt-3 mb-2">Всегда под рукой</p>
-                <img
-                  src="./img/ipad.png"
-                  alt="Product 1"
-                  class="w-full h-24 object-cover mb-2"
-                />
-              </div>
-              <h3 class="text mt-[10px]">Планшеты</h3>
-            </div>
-            <div class="flex-shrink-0 w-[100px]">
-              <div class="katalog_shadow rounded-lg">
-                <p class="text-[8px] text-center pt-3 mb-2">Всегда под рукой</p>
-                <img
-                  src="./img/ipad.png"
-                  alt="Product 1"
-                  class="w-full h-24 object-cover mb-2"
-                />
-              </div>
-              <h3 class="text mt-[10px]">Планшеты</h3>
-            </div>
-            <div class="flex-shrink-0 w-[100px]">
-              <div class="katalog_shadow rounded-lg">
-                <p class="text-[8px] text-center pt-3 mb-2">Всегда под рукой</p>
-                <img
-                  src="./img/ipad.png"
-                  alt="Product 1"
-                  class="w-full h-24 object-cover mb-2"
-                />
-              </div>
-              <h3 class="text mt-[10px]">Планшеты</h3>
-            </div>
-            <div class="flex-shrink-0 w-[100px]">
-              <div class="katalog_shadow rounded-lg">
-                <p class="text-[8px] text-center pt-3 mb-2">Всегда под рукой</p>
-                <img
-                  src="./img/ipad.png"
-                  alt="Product 1"
-                  class="w-full h-24 object-cover mb-2"
-                />
-              </div>
-              <h3 class="text mt-[10px]">Планшеты</h3>
-            </div>
-            <div class="flex-shrink-0 w-[100px]">
-              <div class="katalog_shadow rounded-lg">
-                <p class="text-[8px] text-center pt-3 mb-2">Всегда под рукой</p>
-                <img
-                  src="./img/ipad.png"
-                  alt="Product 1"
-                  class="w-full h-24 object-cover mb-2"
-                />
-              </div>
-              <h3 class="text mt-[10px]">Планшеты</h3>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <section id="top" class="pt-[70px] max-md:pt-0">
-        <h2
-          class="md:text-center text-[42px] pt-24 max-md:pt-[60px] pb-16 leading-3 max-md:text-[20px] max-md:pb-7"
-        >
-          Лучшие предложения
-        </h2>
-        <div class="flex justify-between max-md:hidden">
-          <div>
-            <img class="pb-8 pl-7" src="./img/laptop2.png" alt="Laptop" />
-            <div>
-              <p
-                class="text-[22px] pb-1"
-                style="font-family: MyFont, sans-serif"
-              >
-                Название
-              </p>
-              <p
-                class="text-sm text-[#4B4B4B] pb-9"
-                style="font-family: MyFont, sans-serif"
-              >
-                Описание
-              </p>
-              <p class="text-lg pb-6" style="font-family: MyFont, sans-serif">
-                1,200.00
-              </p>
-              <button
-                class="w-[135px] h-[50px] pb-[2px] bg-gradient-to-r to-blue-500 from-purple-500 rounded-3xl text-white text-lg custom-animation"
-              >
-                Купить
-              </button>
-            </div>
-          </div>
-
-          <div>
-            <img class="pb-8 pl-7" src="./img/computer2.png" alt="Computer" />
-            <div>
-              <p
-                class="text-[22px] pb-1"
-                style="font-family: MyFont, sans-serif"
-              >
-                Название
-              </p>
-              <p
-                class="text-sm text-[#4B4B4B] pb-9"
-                style="font-family: MyFont, sans-serif"
-              >
-                Описание
-              </p>
-              <p class="text-lg pb-6" style="font-family: MyFont, sans-serif">
-                199.00
-              </p>
-              <button
-                class="w-[135px] h-[50px] pb-[2px] bg-gradient-to-r to-blue-500 from-purple-500 rounded-3xl text-white text-lg custom-animation"
-              >
-                Купить
-              </button>
-            </div>
-          </div>
-
-          <div>
-            <img class="pb-8 pl-7" src="./img/monitor2.png" alt="Monitor" />
-            <div>
-              <p
-                class="text-[22px] pb-1"
-                style="font-family: MyFont, sans-serif"
-              >
-                Название
-              </p>
-              <p
-                class="text-sm text-[#4B4B4B] pb-9"
-                style="font-family: MyFont, sans-serif"
-              >
-                Описание
-              </p>
-              <p class="text-lg pb-6" style="font-family: MyFont, sans-serif">
-                1,009.00
-              </p>
-              <button
-                class="w-[135px] h-[50px] pb-[2px] bg-gradient-to-r to-blue-500 from-purple-500 rounded-3xl text-white text-lg custom-animation"
-              >
-                Купить
-              </button>
-            </div>
-          </div>
-
-          <div>
-            <img class="pb-8 pl-7" src="./img/ipad2.png" alt="iPad" />
-            <div>
-              <p
-                class="text-[22px] pb-1"
-                style="font-family: MyFont, sans-serif"
-              >
-                Название
-              </p>
-              <p
-                class="text-sm text-[#4B4B4B] pb-9"
-                style="font-family: MyFont, sans-serif"
-              >
-                Описание
-              </p>
-              <p class="text-lg pb-6" style="font-family: MyFont, sans-serif">
-                610.00
-              </p>
-              <button
-                class="w-[135px] h-[50px] pb-[2px] bg-gradient-to-r to-blue-500 from-purple-500 rounded-3xl text-white text-lg custom-animation"
-              >
-                Купить
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="md:hidden grid grid-cols-2 gap-8">
-          <div class="max-w-md mx-auto bg-white rounded-lg overflow-hidden">
-            <div class="relative overflow-hidden">
-              <div id="slider1" class="slider">
-                <img
-                  src="./img/iphone11.png"
-                  alt="Product Image 1"
-                  class="h-[158px] object-contain px-3"
-                />
-                <img
-                  src="./img/iphone11.png"
-                  alt="Product Image 2"
-                  class="h-[158px] object-contain px-3"
-                />
-                <img
-                  src="./img/iphone11.png"
-                  alt="Product Image 3"
-                  class="h-[158px] object-contain px-3"
-                />
-              </div>
-            </div>
-
-            <div id="indicators1" class="flex justify-center py-4"></div>
-
-            <div class="p-4">
-              <h2 class="text font-bold">Смартфон Apple iPhone 12 64GB</h2>
-              <div class="flex justify-between my-4 items-center">
-                <p class="text-[#357BE7]">В наличии</p>
-                <img src="./img/icons/like.svg" alt="" />
-              </div>
-              <div
-                class="flex max-md:flex max-md:items-center max-md:justify-center"
-              >
-                <a class="w-full" href="./pages/detail.html">
-                  <button
-                    class="w-[100%] h-[44px] pb-[2px] text-lg bg-gradient-to-r to-blue-500 from-purple-500 rounded-full text-white custom-animation max-md:mx-auto"
-                  >
-                    В корзину
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="max-w-md mx-auto bg-white rounded-lg overflow-hidden">
-            <div class="relative overflow-hidden">
-              <div id="slider2" class="slider">
-                <img
-                  src="./img/iphone11.png"
-                  alt="Product Image 1"
-                  class="h-[158px] object-contain px-3"
-                />
-                <img
-                  src="./img/iphone11.png"
-                  alt="Product Image 2"
-                  class="h-[158px] object-contain px-3"
-                />
-                <img
-                  src="./img/iphone11.png"
-                  alt="Product Image 3"
-                  class="h-[158px] object-contain px-3"
-                />
-              </div>
-            </div>
-
-            <div id="indicators2" class="flex justify-center py-4"></div>
-
-            <div class="p-4">
-              <h2 class="text font-bold">Смартфон Apple iPhone 12 64GB</h2>
-              <div class="flex justify-between my-4 items-center">
-                <p class="text-[#357BE7]">В наличии</p>
-                <img src="./img/icons/like.svg" alt="" />
-              </div>
-              <div
-                class="flex max-md:flex max-md:items-center max-md:justify-center"
-              >
-                <a class="w-full" href="./pages/detail.html">
-                  <button
-                    class="w-[100%] h-[44px] pb-[2px] text-lg bg-gradient-to-r to-blue-500 from-purple-500 rounded-full text-white custom-animation max-md:mx-auto"
-                  >
-                    В корзину
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="news">
-        <h2
-          class="md:text-center text-[42px] pt-24 leading-3 max-md:text-[20px] max-md:pb-7 max-md:mt-[60px] max-md:pt-[0px]"
-        >
-          Новости
-        </h2>
-        <div class="flex justify-between max-md:hidden">
-          <div>
-            <div class="relative w-max">
-              <img
-                class="absolute pl-9 pt-[116px]"
-                src="./img/news.png"
-                alt="News"
-              />
-              <img src="./img/Ellipse 2.png" alt="Ellipse" />
-            </div>
-          </div>
-          <div class="max-w-[580px] pt-32">
-            <p class="text-2xl pb-5" style="font-family: MyFontPro">
-              Apple поставит OLED-дисплеи китайским производителям смартфонов
-            </p>
-            <p class="text-2xl pb-5" style="font-family: MyFontPro">
-              В Санкт-Петербурге открылся складской комплекс площадью 5 тыс.
-              кв.м. и вместимостью до 100 000 товаров
-            </p>
-            <p class="text-2xl pb-3" style="font-family: MyFontPro">
-              В России возобновят выпуск фотоаппаратов «Зенит»
-            </p>
-            <p class="text-2xl" style="font-family: MyFontPro">
-              Вперед в спорт! Зимние Олимпийские игры уже близко
-            </p>
-          </div>
-        </div>
-        <div class="flex justify-center pt-4 max-md:hidden">
-          <button
-            class="w-[226px] h-[57px] pb-[2px] text-2xl bg-gradient-to-r to-blue-500 from-purple-500 rounded-full text-white custom-animation"
-          >
-            Смотреть все
-          </button>
-        </div>
-        <div class="md:hidden">
-          <div class="grid grid-cols-5 gap-4 px-3 py-7 shadow-custom-soft">
-            <div class="col-span-2">
-              <img src="./img/mobilenews.png" class="w-full" alt="" />
-            </div>
-            <div class="col-span-3 flex flex-col">
-              <h3 class="text-[16px]">Название</h3>
-              <p class="text-[#9D9D9D] text-sm my-4 leading-6 grow-1">
-                Смартфон Apple iPhone 13 выполнен в ... (ОПИСАНИЕ)
-              </p>
-              <button
-                class="btn_linear border py-4 px-7 w-max text-[10px] rounded-full relative"
-              >
-                <span class="text_linear text-transparent bg-clip-text">
-                  Читать полностью
-                </span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contacts" class="pb-16 pt-16 max-md:pt-6 max-md:pb-[150px]">
-        <div class="flex gap-10 pb-5 max-md:pb-6">
-          <div class="flex flex-col max-md:w-full">
-            <h3 class="text-[42px] pb-7 max-md:text-[20px] max-md:pb-4">
-              Контакты
-            </h3>
-            <div class="flex justify-between w-full">
-              <div class="w-full">
-                <div
-                  class="flex gap-48 max-md:flex-col max-md:gap-7 max-md:pb-10"
-                >
+                <div>
                   <div>
-                    <div>
-                      <a
-                        href="+84951504072"
-                        class="text-sm pb-6 max-md:pb-7 block"
-                      >
-                        <p style="font-family: MyFontPro">Телефон</p>
-                        <p style="font-family: MyFontPro">8 (495) 150-40-72</p>
-                      </a>
-                      <a href="mailto:info@mossales.ru" class="text-sm">
-                        <p style="font-family: MyFontPro">Email</p>
-                        <p style="font-family: MyFontPro">info@mossales.ru</p>
-                      </a>
+                    <div class="text-sm pb-6">
+                      <p style="font-family: MyFontPro">График работы</p>
+                      <p style="font-family: MyFontPro">
+                        Пн - Пт:10.00 - 18.00
+                      </p>
                     </div>
-                  </div>
-
-                  <div>
-                    <div>
-                      <div class="text-sm pb-6">
-                        <p style="font-family: MyFontPro">График работы</p>
-                        <p style="font-family: MyFontPro">
-                          Пн - Пт:10.00 - 18.00
-                        </p>
-                      </div>
-                      <div class="text-sm">
-                        <p style="font-family: MyFontPro">Адрес</p>
-                        <p style="font-family: MyFontPro">
-                          Остаповский пр., 5, стр. 1, БЦ «Контакт»
-                        </p>
-                      </div>
+                    <div class="text-sm">
+                      <p style="font-family: MyFontPro">Адрес</p>
+                      <p style="font-family: MyFontPro">
+                        Остаповский пр., 5, стр. 1, БЦ «Контакт»
+                      </p>
                     </div>
                   </div>
                 </div>
-
-                <form class="pt-4 w-full">
-                  <div class="pb-4">
-                    <input
-                      type="text"
-                      id="name"
-                      class="w-[650px] max-md:w-full h-[60px] pl-7 rounded-full border border-gray-300 input_linear"
-                      placeholder="Имя"
-                    />
-                  </div>
-
-                  <div class="pb-[15px]">
-                    <input
-                      type="tel"
-                      id="phone"
-                      class="w-[650px] max-md:w-full h-[60px] pl-7 rounded-full border border-gray-300 input_linear"
-                      placeholder="Телефон"
-                    />
-                  </div>
-
-                  <div class="pb-[22px]">
-                    <input
-                      type="email"
-                      id="email"
-                      class="w-[650px] max-md:w-full h-[60px] pl-7 input_linear"
-                      placeholder="Email"
-                    />
-                  </div>
-
-                  <div class="pb-4">
-                    <textarea
-                      id="comments"
-                      class="w-[650px] max-md:w-full h-[247px] pl-6 pt-6 rounded-full border border-gray-300 input_linear"
-                      rows="4"
-                      placeholder="Комментарии"
-                    ></textarea>
-                  </div>
-
-                  <div
-                    class="flex max-md:flex max-md:items-center max-md:justify-center"
-                  >
-                    <input
-                      type="submit"
-                      value="Отправить"
-                      class="w-[190px] h-[50px] pb-[2px] text-lg bg-gradient-to-r to-blue-500 from-purple-500 rounded-full text-white custom-animation max-md:mx-auto"
-                    />
-                  </div>
-                </form>
               </div>
+
+              <form class="pt-4 w-full">
+                <div class="pb-4">
+                  <input type="text" id="name"
+                    class="w-[650px] max-md:w-full h-[60px] pl-7 rounded-full border border-gray-300 input_linear"
+                    placeholder="Имя" />
+                </div>
+
+                <div class="pb-[15px]">
+                  <input type="tel" id="phone"
+                    class="w-[650px] max-md:w-full h-[60px] pl-7 rounded-full border border-gray-300 input_linear"
+                    placeholder="Телефон" />
+                </div>
+
+                <div class="pb-[22px]">
+                  <input type="email" id="email" class="w-[650px] max-md:w-full h-[60px] pl-7 input_linear"
+                    placeholder="Email" />
+                </div>
+
+                <div class="pb-4">
+                  <textarea id="comments"
+                    class="w-[650px] max-md:w-full h-[247px] pl-6 pt-6 rounded-full border border-gray-300 input_linear"
+                    rows="4" placeholder="Комментарии"></textarea>
+                </div>
+
+                <div class="flex max-md:flex max-md:items-center max-md:justify-center">
+                  <input type="submit" value="Отправить"
+                    class="w-[190px] h-[50px] pb-[2px] text-lg bg-gradient-to-r to-blue-500 from-purple-500 rounded-full text-white custom-animation max-md:mx-auto" />
+                </div>
+              </form>
             </div>
           </div>
-          <div
-            class="w-[605px] h-[686px] rounded-[3.5em] mt-[16px] overflow-hidden max-md:hidden input_linear"
-          >
-            <div style="position: relative; overflow: hidden">
-              <a
-                href="https://yandex.uz/maps/213/moscow/?utm_medium=mapframe&utm_source=maps"
-                style="
+        </div>
+        <div class="w-[605px] h-[686px] rounded-[3.5em] mt-[16px] overflow-hidden max-md:hidden input_linear">
+          <div style="position: relative; overflow: hidden">
+            <a href="https://yandex.uz/maps/213/moscow/?utm_medium=mapframe&utm_source=maps" style="
                   color: #eee;
                   font-size: 12px;
                   position: absolute;
                   top: 0px;
-                "
-              ></a
-              ><a
-                href="https://yandex.uz/maps/213/moscow/?from=mapframe&ll=37.712057%2C55.722904&mode=usermaps&source=mapframe&um=constructor%3Ac1706fc50ca20d727f503278757469a476d073b1febd802e27d2904bbf49c1fe&utm_medium=mapframe&utm_source=maps&z=13"
-                style="
+                "></a><a
+              href="https://yandex.uz/maps/213/moscow/?from=mapframe&ll=37.712057%2C55.722904&mode=usermaps&source=mapframe&um=constructor%3Ac1706fc50ca20d727f503278757469a476d073b1febd802e27d2904bbf49c1fe&utm_medium=mapframe&utm_source=maps&z=13"
+              style="
                   color: #eee;
                   font-size: 12px;
                   position: absolute;
                   top: 14px;
-                "
-                >Yandex Maps – transport, navigatsiya, joylarni qidirish</a
-              ><iframe
-                src="https://yandex.uz/map-widget/v1/?from=mapframe&ll=37.712057%2C55.722904&mode=usermaps&source=mapframe&um=constructor%3Ac1706fc50ca20d727f503278757469a476d073b1febd802e27d2904bbf49c1fe&utm_source=mapframe&z=13"
-                width="605"
-                height="686"
-                frameborder="1"
-                allowfullscreen="true"
-                style="position: relative"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="pb-8 pt-2 bg-[#F8F9FA] max-md:hidden">
-      <div class="max-w-[1296px] mx-auto border-t-[1px] border-[#D2DAD7] pb-6">
-        <div
-          class="px-4 pt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12"
-        >
-          <div>
-            <a><img src="./img/icons/logo.svg" alt="Логотип" class="mb-3" /></a>
-            <a href="#" class="text-lg">Сайт</a>
-            <p class="mt-3">8 (495) 150-40-72</p>
-          </div>
-
-          <div>
-            <h3 style="font-family: 'MyFontPro'" class="text-[22px] mb-3">
-              Каталог
-            </h3>
-            <ul>
-              <li><a href="#" class="text-lg block pb-[10px]">Ноутбуки</a></li>
-              <li><a href="#" class="text-lg block pb-[10px]">Мониторы</a></li>
-              <li><a href="#" class="text-lg block">Планшеты</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 style="font-family: 'MyFontPro'" class="text-[22px] mb-4">
-              Компания
-            </h3>
-            <ul>
-              <li><a href="#" class="text-lg pb-[10px] block">Контакты</a></li>
-              <li><a href="#" class="text-lg block">Производители</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <p class="text-lg block pb-[10px]">info@mossales.ru</p>
-            <p class="text-lg block pb-[10px]">Пн - Пт: 10.00 - 18.00</p>
-            <p class="text-lg block">Остаповский пр., 5, стр. 1,БЦ «Контакт»</p>
+                ">Yandex Maps – transport, navigatsiya, joylarni qidirish</a><iframe
+              src="https://yandex.uz/map-widget/v1/?from=mapframe&ll=37.712057%2C55.722904&mode=usermaps&source=mapframe&um=constructor%3Ac1706fc50ca20d727f503278757469a476d073b1febd802e27d2904bbf49c1fe&utm_source=mapframe&z=13"
+              width="605" height="686" frameborder="1" allowfullscreen="true" style="position: relative"></iframe>
           </div>
         </div>
       </div>
-    </footer>
-    <script src="./app.js"></script>
-  </body>
+    </section>
+  </main>
+
+  <footer class="pb-8 pt-2 bg-[#F8F9FA] max-md:hidden">
+    <div class="max-w-[1296px] mx-auto border-t-[1px] border-[#D2DAD7] pb-6">
+      <div class="px-4 pt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
+        <div>
+          <a><img src="./img/icons/logo.svg" alt="Логотип" class="mb-3" /></a>
+          <a href="#" class="text-lg">Сайт</a>
+          <p class="mt-3">8 (495) 150-40-72</p>
+        </div>
+
+        <div>
+          <h3 style="font-family: 'MyFontPro'" class="text-[22px] mb-3">
+            Каталог
+          </h3>
+          <ul>
+            <li><a href="#" class="text-lg block pb-[10px]">Ноутбуки</a></li>
+            <li><a href="#" class="text-lg block pb-[10px]">Мониторы</a></li>
+            <li><a href="#" class="text-lg block">Планшеты</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 style="font-family: 'MyFontPro'" class="text-[22px] mb-4">
+            Компания
+          </h3>
+          <ul>
+            <li><a href="#" class="text-lg pb-[10px] block">Контакты</a></li>
+            <li><a href="#" class="text-lg block">Производители</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="text-lg block pb-[10px]">info@mossales.ru</p>
+          <p class="text-lg block pb-[10px]">Пн - Пт: 10.00 - 18.00</p>
+          <p class="text-lg block">Остаповский пр., 5, стр. 1,БЦ «Контакт»</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="./app.js"></script>
+</body>
+
 </html>

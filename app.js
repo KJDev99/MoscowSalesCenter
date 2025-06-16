@@ -1,55 +1,83 @@
-// document.addEventListener("DOMContentLoaded", function () {
-//   const carousel = document.getElementById("carousel");
-//   const inner = carousel.querySelector(".carousel-inner");
-//   const items = carousel.querySelectorAll(".carousel-item");
-//   const prevButton = carousel.querySelector("#prevButton");
-//   const nextButton = carousel.querySelector("#nextButton");
-
-//   let currentIndex = 0;
-
-//   function updateCarousel() {
-//     const offset = -currentIndex * 100;
-//     inner.style.transform = `translateX(${offset}%)`;
-//   }
-
-//   prevButton.addEventListener("click", () => {
-//     if (currentIndex > 0) {
-//       currentIndex--;
-//     } else {
-//       currentIndex = items.length - 1;
-//     }
-//     updateCarousel();
-//   });
-
-//   nextButton.addEventListener("click", () => {
-//     if (currentIndex < items.length - 1) {
-//       currentIndex++;
-//     } else {
-//       currentIndex = 0;
-//     }
-//     updateCarousel();
-//   });
-// });
-
 document.addEventListener("DOMContentLoaded", function () {
   const carousel = document.getElementById("carousel");
   const inner = carousel.querySelector(".carousel-inner");
-  const items = carousel.querySelectorAll(".carousel-inner > div");
+  const progressBarsContainer = carousel.querySelector(
+    "#progressBarsContainer"
+  );
   const prevButton = carousel.querySelector("#prevButton");
   const nextButton = carousel.querySelector("#nextButton");
-  const progressBars = [
-    document.getElementById("progress1"),
-    document.getElementById("progress2"),
-    document.getElementById("progress3"),
+
+  const slidesData = [
+    {
+      bgImage: "./img/slider/bg1.png",
+      title: "Ваш IT-фундамент",
+      content: `
+        <ul class="list-disc ml-6 md:mb-12 text-lg md:text-xl text-white max-md:text-sm">
+          <li>Мощь серверов</li>
+          <li>Скорость сетей</li>
+          <li>Надежность рабочих мест</li>
+        </ul>
+      `,
+    },
+    {
+      bgImage: "./img/slider/bg2.png",
+      title:
+        "Комплексный поставщик <br class='md:hidden'> надежных IT решений <br class='md:hidden'> для Вашего бизнеса",
+      content: "",
+    },
+    {
+      bgImage: "./img/slider/bg3.png",
+      title: "Ваша комплексная <br class='md:hidden'> ИТ-инфраструктура",
+      content: `
+        <p class="mb-12 text-lg md:text-xl text-white max-md:text-base">
+          От рабочего места до сервера.
+          <span class="max-md:hidden">Оптимизируйте ИТ-бюджет с надежным оборудованием.</span>
+        </p>
+      `,
+    },
   ];
+
+  slidesData.forEach((slide, index) => {
+    const slideElement = document.createElement("div");
+    slideElement.className =
+      "w-full h-full flex items-center justify-start relative flex-shrink-0";
+    slideElement.innerHTML = `
+      <img
+        src="${slide.bgImage}"
+        alt="Slide ${index + 1}"
+        class="absolute w-[34%] h-full object-cover rounded-[32px] max-md:rounded-[8px]"
+      />
+      <div class="relative z-10 p-8 max-w-[650px] md:pl-24">
+        <h1 class="text-4xl md:text-5xl font-bold md:mb-10 text-white max-md:text-base">
+          ${slide.title}
+        </h1>
+        ${slide.content}
+        <button
+          class="bg-white text-black font-semibold py-2 px-6 rounded-full border border-[black] max-md:hidden cursor-pointer"
+        >
+          Заказать звонок
+        </button>
+      </div>
+    `;
+    inner.appendChild(slideElement);
+
+    const progressBarContainer = document.createElement("div");
+    progressBarContainer.className =
+      "w-24 h-1 bg-white/30 rounded overflow-hidden";
+    progressBarContainer.innerHTML = `<div class="h-full bg-white w-0 progress-bar transition-all duration-300 linear"></div>`;
+    progressBarsContainer.appendChild(progressBarContainer);
+  });
+
+  inner.style.width = `${slidesData.length * 100}%`;
+
+  const items = carousel.querySelectorAll(".carousel-inner > div");
+  const progressBars = carousel.querySelectorAll(".progress-bar");
 
   let currentIndex = 0;
   let intervalId;
   let progressIntervalId;
   const slideDuration = 4000; // 4 seconds
   let isAnimating = false;
-
-  // Hover uchun yangi o'zgaruvchilar
   let isPaused = false;
   let remainingTime = slideDuration;
   let hoverStartTime;
@@ -58,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
     progressBars.forEach((bar) => {
       bar.style.transition = "none";
       bar.style.width = "0%";
-      void bar.offsetWidth; // Force reflow
+      void bar.offsetWidth;
       bar.style.transition = "width 4s linear";
     });
   }
@@ -80,7 +108,9 @@ document.addEventListener("DOMContentLoaded", function () {
     inner.style.transform = `translateX(${offset}%)`;
 
     resetProgressBars();
-    progressBars[currentIndex].style.width = "100%";
+    if (progressBars[currentIndex]) {
+      progressBars[currentIndex].style.width = "100%";
+    }
 
     intervalId = setTimeout(() => {
       updateCarousel("next");
@@ -99,7 +129,6 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCarousel("prev");
   }
 
-  // Hover eventlari
   carousel.addEventListener("mouseenter", () => {
     if (isAnimating) return;
 
@@ -107,6 +136,8 @@ document.addEventListener("DOMContentLoaded", function () {
     hoverStartTime = Date.now();
 
     const activeProgressBar = progressBars[currentIndex];
+    if (!activeProgressBar) return;
+
     const computedStyle = window.getComputedStyle(activeProgressBar);
     const parentWidth = activeProgressBar.parentElement.offsetWidth;
     const currentWidth = (parseFloat(computedStyle.width) / parentWidth) * 100;
@@ -123,6 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     isPaused = false;
     const activeProgressBar = progressBars[currentIndex];
+    if (!activeProgressBar) return;
 
     activeProgressBar.style.transition = `width ${remainingTime}ms linear`;
     activeProgressBar.style.width = "100%";
@@ -132,7 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }, remainingTime);
   });
 
-  // Button eventlari
   prevButton.addEventListener("click", () => {
     prevSlide();
   });
@@ -141,7 +172,6 @@ document.addEventListener("DOMContentLoaded", function () {
     nextSlide();
   });
 
-  // Touch events
   let touchStartX = 0;
   let touchEndX = 0;
 
@@ -170,18 +200,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Boshlang'ich holat
+  // Initialize
   resetProgressBars();
-  progressBars[currentIndex].style.width = "100%";
+  if (progressBars[currentIndex]) {
+    progressBars[currentIndex].style.width = "100%";
+  }
   intervalId = setTimeout(() => {
     updateCarousel("next");
   }, slideDuration);
 });
-function nextSlide() {
-  if (!isPaused) {
-    updateCarousel("next");
-  }
-}
 
 const catalogButton = document.getElementById("catalogButton");
 const catalogModal = document.getElementById("catalogModal");
